@@ -7,8 +7,8 @@
   <title></title>
   <meta name="ad.size" content="width=300,height=250">
   <script type="text/javascript">
-    var clickTag = "https://www.google.com/";
-    var clickTag2 = "https://www.google.com/";
+    var clickTag = "https://www.adobe.com/creativecloud/renew/resubscribe-promo-sa.html";
+    var clickTag2 = "https://www.adobe.com/creativecloud/renew/resubscribe-promo-sa.html";
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
   <style type="text/css">
@@ -140,6 +140,62 @@
       right: 0;
       z-index: 0;
     }
+
+    .js-element-1 {
+      left: 0;
+      top: 0;
+      width: 340px;
+      height: 280px;
+      transform: translateX(-40px);
+      transform: translateX(-30px);
+    }
+
+    .js-element-2 {
+      left: 20px;
+      top: 27px;
+      width: 130px;
+      height: 10px;
+    }
+
+    .js-element-3 {
+      left: 20px;
+      top: 55px;
+      width: 107px;
+      height: 22px;
+      opacity: 0;
+      transform: translateX(40px);
+    }
+
+    .js-element-4 {
+      left: 20px;
+      top: 84px;
+      width: 254px;
+      height: 25px;
+      opacity: 0;
+      transform: translateX(60px);
+    }
+
+    .js-element-5 {
+      left: 18px;
+      top: 120px;
+      width: 102px;
+      height: 36px;
+      opacity: 0;
+    }
+
+    .js-element-6 {
+      left: 20px;
+      top: 195px;
+      width: 30px;
+      height: 40px;
+    }
+
+    .js-element-7 {
+      left: 155px;
+      top: 120px;
+      width: 147px;
+      height: 129px;
+    }
   </style>
   
   <script type="text/javascript" charset="utf-8">
@@ -153,10 +209,15 @@
         ];
       var addtl_load_imgs = [
           "./images/F1.gif",
-          "./images/endframe.gif"
+          "./images/tag_cloud.png",
+          "./images/tag_cta.png",
+          "./images/tag_eyebrow.png",
+          "./images/tag_headline1.png",
+          "./images/tag_headline2.png",
+          "./images/tag_logo.png",
+          "./images/tag_bg.jpg"
         ];
       var exit = document.querySelector('.exit');
-      // var legalExit = document.querySelector('.legal-exit');
       var bannerContent = document.querySelector('.banner-content');
 
       var bannerConfig = {
@@ -168,6 +229,10 @@
       // list all animating elements
       var frame1 = document.querySelector('.js-frame-1');
       var frame2 = document.querySelector('.js-frame-2');
+      var element1 = document.querySelector('.js-element-1');
+      var element3 = document.querySelector('.js-element-3');
+      var element4 = document.querySelector('.js-element-4');
+      var element5 = document.querySelector('.js-element-5 ');
 
 
       // timelines
@@ -178,10 +243,19 @@
         bannerTL = new TimelineMax({ paused: false });
         bannerTL
           // reveal frame 1
-          .to(frame1, 0, { opacity: '1', ease: Sine.easeOut }, '+=0')
+          .to(frame1, 0, { opacity: '1', ease: Sine.easeOut }, '+=1')
           // reveal endframe
-          .to(frame2, .25, { opacity: '1', ease: Sine.easeOut }, '+=2')
-
+          .to(frame2, .25, { opacity: '1', ease: Sine.easeOut }, '+=6')
+          // animate endframe bg
+          .to(element1, 0, { css:{scaleX: 1, scaleY: 1}, ease: Sine.easeIn }, '-=4')
+          .to(element1, 5, { css:{scaleX: 1.5, scaleY: 1.5}, ease: Sine.easeIn }, '-=1.1')
+          // reveal headline1
+          .to(element3, .25, { opacity: '1', x: '0', ease: Sine.easeOut }, '-=3.5')
+          // reveal headline2
+          .to(element4, .25, { opacity: '1', x: '0', ease: Sine.easeOut }, '-=3.25')
+          // reveal cta
+          .to(element5, .12, { css:{opacity:1, scaleX: 1.2, scaleY: 1.2}, ease: Sine.easeIn }, '-=3')
+          .to(element5, .25, { css:{scaleX: 1, scaleY: 1}, ease: Sine.easeOut }, '-=2.75')
 
 
         function ctaOnHover() {
@@ -237,7 +311,13 @@
         <img src="./images/F1.gif" class="frame__slide js-frame-slide" alt="">
       </div>
       <div class="frame frame--2 js-frame-2">
-        <img src="./images/endframe.gif" class="frame__slide js-frame-slide" alt="">
+        <img src="./images/tag_bg.jpg" class="frame__slide js-element-1" alt="">
+        <img src="./images/tag_eyebrow.png" class="frame__slide js-element-2" alt="">
+        <img src="./images/tag_headline1.png" class="frame__slide js-element-3" alt="">
+        <img src="./images/tag_headline2.png" class="frame__slide js-element-4" alt="">
+        <img src="./images/tag_cta.png" class="frame__slide js-element-5" alt="">
+        <img src="./images/tag_logo.png" class="frame__slide js-element-6" alt="">
+        <img src="./images/tag_cloud.png" class="frame__slide js-element-7" alt="">
       </div>
     </div>
   </div>
