@@ -164,7 +164,7 @@
       width: 107px;
       height: 22px;
       opacity: 0;
-      transform: translateY(+100px);
+      transform: translateY(+80px);
     }
 
     .js-element-4 {
@@ -173,7 +173,7 @@
       width: 254px;
       height: 25px;
       opacity: 0;
-      transform: translateY(+80px);
+      transform: translateY(+90px);
     }
 
     .js-element-5 {
@@ -182,7 +182,7 @@
       width: 102px;
       height: 36px;
       opacity: 0;
-      transform: translateY(+60px);
+      transform: translateY(+80px);
     }
 
     .js-element-6 {
@@ -256,15 +256,15 @@
           // reveal endframe
           .to(frame2, .25, { opacity: '1', ease: Sine.easeOut }, '+=5.5')
           // animate endframe bg
-          .to(element1, 1, { y: '0', ease: Sine.easeIn }, '+=0')
+          .to(element1, 1, { y: '0', ease: Sine.easeIn }, '+=.5')
           // reveal eyebrow
-          .to(element2, .25, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0')
+          .to(element2, .15, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.1')
           // reveal headline1
-          .to(element3, .25, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.5')
+          .to(element3, .25, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.15')
           // reveal headline2
-          .to(element4, .25, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.70')
+          .to(element4, .35, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.25')
           // reveal cta
-          .to(element5, .25, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0')
+          .to(element5, .45, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.30')
           // reveal logo
           .to(element6, .25, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0')
           // reveal cloud
