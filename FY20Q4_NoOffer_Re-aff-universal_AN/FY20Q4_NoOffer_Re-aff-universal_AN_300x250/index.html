@@ -146,8 +146,7 @@
       top: 0;
       width: 340px;
       height: 280px;
-      transform: translateX(-40px);
-      transform: translateX(-30px);
+      transform: translateY(+250px);
     }
 
     .js-element-2 {
@@ -155,6 +154,8 @@
       top: 27px;
       width: 130px;
       height: 10px;
+      opacity: 0;
+      transform: translateY(+120px);
     }
 
     .js-element-3 {
@@ -163,7 +164,7 @@
       width: 107px;
       height: 22px;
       opacity: 0;
-      transform: translateX(40px);
+      transform: translateY(+100px);
     }
 
     .js-element-4 {
@@ -172,7 +173,7 @@
       width: 254px;
       height: 25px;
       opacity: 0;
-      transform: translateX(60px);
+      transform: translateY(+80px);
     }
 
     .js-element-5 {
@@ -181,6 +182,7 @@
       width: 102px;
       height: 36px;
       opacity: 0;
+      transform: translateY(+60px);
     }
 
     .js-element-6 {
@@ -188,6 +190,8 @@
       top: 195px;
       width: 30px;
       height: 40px;
+      opacity: 0;
+      transform: translateY(+40px);
     }
 
     .js-element-7 {
@@ -195,6 +199,8 @@
       top: 120px;
       width: 147px;
       height: 129px;
+      opacity: 0;
+      transform: translateY(+140px);
     }
   </style>
   
@@ -230,9 +236,12 @@
       var frame1 = document.querySelector('.js-frame-1');
       var frame2 = document.querySelector('.js-frame-2');
       var element1 = document.querySelector('.js-element-1');
+      var element2 = document.querySelector('.js-element-2');
       var element3 = document.querySelector('.js-element-3');
       var element4 = document.querySelector('.js-element-4');
       var element5 = document.querySelector('.js-element-5 ');
+      var element6 = document.querySelector('.js-element-6');
+      var element7 = document.querySelector('.js-element-7 ');
 
 
       // timelines
@@ -247,15 +256,19 @@
           // reveal endframe
           .to(frame2, .25, { opacity: '1', ease: Sine.easeOut }, '+=5.5')
           // animate endframe bg
-          .to(element1, 0, { css:{scaleX: 1, scaleY: 1}, ease: Sine.easeIn }, '-=4')
-          .to(element1, 5, { css:{scaleX: 1.5, scaleY: 1.5}, ease: Sine.easeIn }, '-=1.1')
+          .to(element1, 1, { y: '0', ease: Sine.easeIn }, '+=0')
+          // reveal eyebrow
+          .to(element2, .25, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0')
           // reveal headline1
-          .to(element3, .25, { opacity: '1', x: '0', ease: Sine.easeOut }, '-=3.5')
+          .to(element3, .25, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.5')
           // reveal headline2
-          .to(element4, .25, { opacity: '1', x: '0', ease: Sine.easeOut }, '-=3.25')
+          .to(element4, .25, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.70')
           // reveal cta
-          .to(element5, .12, { css:{opacity:1, scaleX: 1.2, scaleY: 1.2}, ease: Sine.easeIn }, '-=3')
-          .to(element5, .25, { css:{scaleX: 1, scaleY: 1}, ease: Sine.easeOut }, '-=2.75')
+          .to(element5, .25, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0')
+          // reveal logo
+          .to(element6, .25, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0')
+          // reveal cloud
+          .to(element7, .25, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.75')
 
 
         function ctaOnHover() {
