@@ -186,7 +186,7 @@
     }
 
     .js-element-7 {
-      left: 20px;
+      left: 28px;
       top: 94px;
       width: 102px;
       height: 36px;
@@ -270,16 +270,13 @@
           .to(element3, .5, { css:{width: '300px'}, ease: Sine.easeIn }, '-=0')
           // reveal endframe
           .to(frame2, .25, { opacity: '1', ease: Sine.easeOut }, '+=1')
-          // animate endframe bg
-          .to(element4, 0, { css:{scaleX: 1, scaleY: 1}, ease: Sine.easeIn }, '-=2')
-          .to(element4, 5, { css:{scaleX: 1.5, scaleY: 1.5}, ease: Sine.easeIn }, '-=0.1')
           // reveal headline1
-          .to(element5, .25, { opacity: '1', x: '0', ease: Sine.easeOut }, '-=5')
+          .to(element5, .25, { opacity: '1', x: '0', ease: Sine.easeOut }, '-=0')
           // reveal headline2
-          .to(element6, .25, { opacity: '1', x: '0', ease: Sine.easeOut }, '-=4.75')
+          .to(element6, .25, { opacity: '1', x: '0', ease: Sine.easeOut }, '+=.25')
           // reveal cta
-          .to(element7, .12, { css:{opacity:1, scale: 1.2}, ease: Sine.easeIn }, '-=4.5')
-          .to(element7, .25, { css:{scale: 1}, ease: Sine.easeOut }, '-=4.25')
+          .to(element7, .12, { css:{opacity:1, scale: 1.2}, ease: Sine.easeIn }, '+=.25')
+          .to(element7, .25, { css:{scale: 1}, ease: Sine.easeOut }, '-=0.5')
       }
 
       function preload(arr) {
