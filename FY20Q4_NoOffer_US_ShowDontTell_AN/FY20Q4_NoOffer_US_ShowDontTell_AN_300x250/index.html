@@ -115,6 +115,11 @@
     }
 
 
+    .frame--0 {
+      z-index: 1;
+      opacity: 0;
+    }
+
     .frame--1 {
       z-index: 1;
       opacity: 0;
@@ -177,6 +182,22 @@
       background:url('./images/F1.jpg') no-repeat;
       background-position:0px 0px;
       background-size: 100% auto;
+    }
+
+    .js-frame-slide-1 {
+      left: 0;
+      top: 0;
+      width: 300px;
+      height: 250px;
+    }
+
+    .js-frame-slide-1,
+    .js-frame-slide-2,
+    .js-frame-slide-3,
+    .js-frame-slide-4,
+    .js-frame-slide-5,
+    .js-frame-slide-6 {
+      opacity: 0;
     }
 
     .js-element-4 {
@@ -245,6 +266,11 @@
         ];
       var addtl_load_imgs = [
           "./images/F1.jpg",
+          "./images/F2.jpg",
+          "./images/F3.jpg",
+          "./images/F4.jpg",
+          "./images/F5.jpg",
+          "./images/F6.jpg",
           "./images/F1_bg_mask.png",
           "./images/F1_dotted_box.png",
           "./images/F1_text.png",
@@ -265,9 +291,15 @@
 
 
       // list all animating elements
+      var frame0 = document.querySelector('.js-frame-0');
       var frame1 = document.querySelector('.js-frame-1');
       var frame2 = document.querySelector('.js-frame-2');
-      var element0 = document.querySelector('.js-element-0');
+      var slide1 = document.querySelector('.js-frame-slide-1');
+      var slide2 = document.querySelector('.js-frame-slide-2');
+      var slide3 = document.querySelector('.js-frame-slide-3');
+      var slide4 = document.querySelector('.js-frame-slide-4');
+      var slide5 = document.querySelector('.js-frame-slide-5');
+      var slide6 = document.querySelector('.js-frame-slide-6');
       var element1 = document.querySelector('.js-element-1');
       var element2 = document.querySelector('.js-element-2');
       var element3 = document.querySelector('.js-element-3');
@@ -286,21 +318,29 @@
 
         bannerTL = new TimelineMax({ paused: false });
         bannerTL
-          // reveal frame 1
+          // initialize origin
           .set(element2, {transformOrigin:"0% 0%"})
-          .to(frame1, 0, { opacity: '1' }, '+=1')
-          .to(element0, 1.5, {backgroundPosition:"0 -4000px",ease:SteppedEase.config(16)} )
+          // reveal frame 0
+          .to(frame0, 0, { opacity: '1' }, '+=0.25')
+          .to(slide1, .25, { opacity: '1', ease: Sine.easeOut }, '+=0.5')
+          .to(slide2, .25, { opacity: '1', ease: Sine.easeOut }, '+=0.0')
+          .to(slide3, .25, { opacity: '1', ease: Sine.easeOut }, '+=0.0')
+          .to(slide4, .25, { opacity: '1', ease: Sine.easeOut }, '+=0.0')
+          .to(slide5, .15, { opacity: '1', ease: Sine.easeOut }, '+=0.5')
+          .to(slide6, .25, { opacity: '1', ease: Sine.easeOut }, '+=0.25')
+          //reveal frame 1
+          .to(frame1, 0, { opacity: '1' }, '+=0.5')
           // reveal bg mask
-          .to(element1, .5, { opacity: '1', ease: Sine.easeOut }, '+=0.5')
-          // reveal frame
+          .to(element1, .5, { opacity: '1', ease: Sine.easeOut }, '+=0.0')
+          // reveal dotted frame
           .to(element2, 0, { css:{scale: 0} }, '-=.5')
           .to(element2, .5, { css:{opacity:1, scale: 1}, ease: Sine.easeIn }, '-=.5')
           // reveal text
           .to(element3, .5, { css:{width: '300px'}, ease: Sine.easeIn }, '-=0')
-          // reveal endframe
-          .to(frame2, .25, { opacity: '1', ease: Sine.easeOut }, '+=.5')
+          // reveal frame 2
+          .to(frame2, 0, { opacity: '1', ease: Sine.easeOut }, '+=1.5')
           // animate endframe bg
-          .to(element4, 1, { y: '0', ease: Sine.easeIn }, '+=0')
+          .to(element4, 0, { y: '0', ease: Sine.easeIn }, '+=0')
           // reveal headline1
           .to(element5, .25, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.0')
           // reveal headline2
@@ -354,12 +394,16 @@
     <a class="exit" href="javascript:void(window.open(window.clickTag))"></a>
     <div class="banner-content">
       <img src="./images/F0.jpg" alt="">
+
+      <div class="frame frame--0 js-frame-0">
+        <img src="./images/F1.jpg" class="frame__slide js-frame-slide-1" alt="">
+        <img src="./images/F2.jpg" class="frame__slide js-frame-slide-2" alt="">
+        <img src="./images/F3.jpg" class="frame__slide js-frame-slide-3" alt="">
+        <img src="./images/F4.jpg" class="frame__slide js-frame-slide-4" alt="">
+        <img src="./images/F5.jpg" class="frame__slide js-frame-slide-5" alt="">
+        <img src="./images/F6.jpg" class="frame__slide js-frame-slide-6" alt="">
+      </div> 
       <div class="frame frame--1 js-frame-1">
-        <div class="f1-wrapper">
-          <div class="f1-img js-element-0">
-            
-          </div>
-        </div>
         <img src="./images/F1_bg_mask.png" class="frame__slide js-element-1" alt="">
         <img src="./images/F1_dotted_box.png" class="frame__slide js-element-2" alt="">
         <div class="frame__slide js-element-3"><img src="./images/F1_text.png" class="frame__slide" alt=""></div>
