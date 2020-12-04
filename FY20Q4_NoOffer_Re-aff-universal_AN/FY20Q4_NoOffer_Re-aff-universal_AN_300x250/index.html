@@ -146,7 +146,6 @@
       top: 0;
       width: 340px;
       height: 280px;
-      transform: translateY(+250px);
     }
 
     .js-element-2 {
@@ -155,7 +154,7 @@
       width: 130px;
       height: 10px;
       opacity: 0;
-      transform: translateY(+100px);
+      transform: translateY(+90px);
     }
 
     .js-element-3 {
@@ -252,23 +251,21 @@
         bannerTL = new TimelineMax({ paused: false });
         bannerTL
           // reveal frame 1
-          .to(frame1, 0, { opacity: '1', ease: Sine.easeOut }, '+=1')
+          .to(frame1, 0, { opacity: '1', ease: Sine.easeOut }, '+=0')
           // reveal endframe
-          .to(frame2, .25, { opacity: '1', ease: Sine.easeOut }, '+=5.5')
-          // animate endframe bg
-          .to(element1, 1, { y: '0', ease: Sine.easeIn }, '+=.5')
+          .to(frame2, .5, { opacity: '1', ease: Sine.easeOut }, '+=4.25')
           // reveal eyebrow
-          .to(element2, .15, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.1')
+          .to(element2, .25, { opacity: '1', y: '0', ease: Sine.easeOut }, '+=0.0')
           // reveal headline1
-          .to(element3, .25, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.15')
+          .to(element3, .5, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.15')
           // reveal headline2
-          .to(element4, .35, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.25')
+          .to(element4, .65, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.5')
           // reveal cta
-          .to(element5, .45, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.30')
+          .to(element5, .8, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.65')
           // reveal logo
-          .to(element6, .25, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0')
+          .to(element6, .5, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.5')
           // reveal cloud
-          .to(element7, .25, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.75')
+          .to(element7, .5, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.75')
 
 
         function ctaOnHover() {
