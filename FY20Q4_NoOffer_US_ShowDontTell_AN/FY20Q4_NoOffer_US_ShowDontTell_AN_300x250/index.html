@@ -265,9 +265,9 @@
           "./images/F1_dotted_box.png",
           "./images/F1_text.svg",
           "./images/tag_cloud.svg",
-          "./images/tag_cta.png",
-          "./images/tag_headline1.png",
-          "./images/tag_headline2.png",
+          "./images/tag_cta.svg",
+          "./images/tag_headline1.svg",
+          "./images/tag_headline2.svg",
           "./images/tag_logo.svg",
           "./images/tag_bg.jpg"
         ];
@@ -306,17 +306,17 @@
           // initialize origin
           .set(element2, {transformOrigin:"0% 0%"})
           // reveal frame 0
-          .to(frame0, 0, { opacity: '1' }, '+=0.25')
-          .to(slide1, .25, { opacity: '1', ease: Sine.easeOut }, '+=0.5')
+          .to(frame0, 0, { opacity: '1' }, '+=1')
+          .to(slide1, .5, { opacity: '1', ease: Sine.easeOut }, '+=0')
           //reveal frame 1
-          .to(frame1, 0, { opacity: '1' }, '-=0.25')
+          .to(frame1, 0, { opacity: '1' }, '-=0.5')
           // reveal bg mask
-          .to(element1, .5, { opacity: '1', ease: Sine.easeOut }, '-=0.25')
+          .to(element1, .5, { opacity: '1', ease: Sine.easeOut }, '-=0.5')
           // reveal dotted frame
-          .to(element2, 0, { css:{scale: 0} }, '-=.5')
-          .to(element2, .5, { css:{opacity:1, scale: 1}, ease: Sine.easeIn }, '-=.5')
+          .to(element2, 0, { css:{scale: 0} }, '+=0')
+          .to(element2, .5, { css:{opacity:1, scale: 1}, ease: Sine.easeIn }, '+=0')
           // reveal text
-          .to(element3, .5, { css:{width: '300px'}, ease: Sine.easeIn }, '-=0')
+          .to(element3, .75, { css:{width: '300px'}, ease: Sine.easeIn }, '-=0')
           // reveal frame 2
           .to(frame2, 0, { opacity: '1', ease: Sine.easeOut }, '+=1.5')
           // animate endframe bg
@@ -385,9 +385,9 @@
       </div>
       <div class="frame frame--2 js-frame-2">
         <img src="./images/tag_bg.jpg" class="frame__slide js-element-4" alt="">
-        <img src="./images/tag_headline1.png" class="frame__slide js-element-5" alt="">
-        <img src="./images/tag_headline2.png" class="frame__slide js-element-6" alt="">
-        <img src="./images/tag_cta.png" class="frame__slide js-element-7" alt="">
+        <img src="./images/tag_headline1.svg" class="frame__slide js-element-5" alt="">
+        <img src="./images/tag_headline2.svg" class="frame__slide js-element-6" alt="">
+        <img src="./images/tag_cta.svg" class="frame__slide js-element-7" alt="">
         <img src="./images/tag_logo.svg" class="frame__slide js-element-8" alt="">
         <img src="./images/tag_cloud.svg" class="frame__slide js-element-9" alt="">
       </div>
