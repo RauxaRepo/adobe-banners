@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title></title>
+  <meta name="ad.size" content="width=300,height=250">
+  <script type="text/javascript">
+    var clickTag = "https://www.adobe.com/creativecloud/renew/resubscribe-promo-sa.html";
+    var clickTag2 = "https://www.adobe.com/creativecloud/renew/resubscribe-promo-sa.html";
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+  <style type="text/css">
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    * {
+      padding: 0;
+    }
+
+    .container {
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .banner-content {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      display: none;
+      z-index: 1;
+    }
+
+    .banner-content.banner-content--active {
+      opacity: 1;
+      display: block;
+    }
+
+    .b-300x250 {
+      width: 300px;
+      height: 250px;
+      padding: 0;
+    }
+
+    /*CTA BTN*/
+    .btn-container {
+      width: 300px;
+      height: 250px;
+      background-color: transparent;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 100;
+      cursor: pointer;
+    }
+
+    img {
+      width: 300px;
+      height: 250px;
+    }
+
+    .cta-btn {
+      background-color: #fff;
+      opacity: 1;
+      width: 130px;
+      height: 35px;
+      border-radius: 6px;
+      top: 192px;
+      left: 85px;
+      position: absolute;
+      z-index: 0;
+    }
+
+    .cta-btn.hovered {
+      transform: scale(1.05);
+    }
+
+
+    .banner-border {
+      position: absolute;
+      width: 298px;
+      height: 248px;
+      border: 1px solid #000000;
+      pointer-events: none;
+      z-index: 6;
+      top: 0px;
+      left: 0px;
+    }
+
+    .exit {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+      top: 0;
+      left: 0;
+      cursor: pointer;
+    }
+
+
+    .frame {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+
+    .frame--1 {
+      z-index: 1;
+      opacity: 0;
+    }
+
+    .frame--1 .frame__slide {
+      opacity: 1;
+      z-index: 2;
+    }
+
+    .frame--2 {
+      opacity: 0;
+      z-index: 2;
+    }
+
+    .frame__background, .frame__slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 0;
+    }
+
+    .js-element-1 {
+      left: 0;
+      top: 0;
+      width: 340px;
+      height: 280px;
+    }
+
+    .js-element-2 {
+      left: 20px;
+      top: 24px;
+      width: 130px;
+      height: 10px;
+      opacity: 0;
+      transform: translateY(+90px);
+    }
+
+    .js-element-3 {
+      left: 20px;
+      top: 46px;
+      width: 114px;
+      height: 30px;
+      opacity: 0;
+      transform: translateY(+90px);
+    }
+
+    .js-element-4 {
+      left: 22px;
+      top: 75px;
+      width: 260px;
+      height: 30px;
+      opacity: 0;
+      transform: translateY(+80px);
+    }
+
+    .js-element-5 {
+      left: 20px;
+      top: 115px;
+      width: 102px;
+      height: 36px;
+      opacity: 0;
+      transform: translateY(+80px);
+    }
+
+    .js-element-6 {
+      left: 20px;
+      top: 165px;
+      width: 54px;
+      height: 65px;
+      opacity: 0;
+      transform: translateY(+40px);
+    }
+
+    .js-element-7 {
+      left: 155px;
+      top: 120px;
+      width: 200px;
+      height: 151px;
+      opacity: 0;
+      transform: translateY(+140px);
+    }
+  </style>
+  
+  <script type="text/javascript" charset="utf-8">
+    var Bnr = window.Bnr || {};
+
+    Bnr = {
+        Model: {
+            numImgsLoaded: 0,
+            initialLoadComplete: false,
+            initialLoadImgs: [
+                "./images/F0.gif"
+            ],
+            addtlLoadImgs: [
+                "./images/F1.gif",
+                "./images/tag_cloud.svg",
+                "./images/tag_cta.svg",
+                "./images/tag_eyebrow.svg",
+                "./images/tag_headline1.svg",
+                "./images/tag_headline2.svg",
+                "./images/tag_logo.svg",
+                "./images/tag_bg.jpg"
+            ],
+            bannerConfig: {
+                width: 300,
+                height: 250
+            },
+            exit: "",
+            bannerContent: "",
+            frame1: "",
+            frame2: "",
+            element1: "",
+            element2: "",
+            element3: "",
+            element4: "",
+            element5: "",
+            element6: "",
+            element7: "",
+            bannerTL: new TimelineMax({ paused: false })
+        },
+
+        bannerAnimation: function () {
+            console.log("hello");
+            Bnr.Model.bannerTL
+            // reveal frame 1
+            .to(Bnr.Model.frame1, 0, { opacity: "1", ease: Sine.easeOut }, "+=0")
+            // reveal endframe
+            .to(Bnr.Model.frame2, 0.5, { opacity: "1", ease: Sine.easeOut }, "+=4.25")
+            // reveal eyebrow
+            .to(Bnr.Model.element2, 0.25, { opacity: "1", y: "0", ease: Sine.easeOut }, "+=0.0")
+            // reveal headline1
+            .to(Bnr.Model.element3, 0.5, { opacity: "1", y: "0", ease: Sine.easeOut }, "-=0.15")
+            // reveal headline2
+            .to(Bnr.Model.element4, 0.65, { opacity: "1", y: "0", ease: Sine.easeOut }, "-=0.5")
+            // reveal cta
+            .to(Bnr.Model.element5, 0.8, { opacity: "1", y: "0", ease: Sine.easeOut }, "-=0.65")
+            // reveal logo
+            .to(Bnr.Model.element6, 0.5, { opacity: "1", y: "0", ease: Sine.easeOut }, "-=0.5")
+            // reveal cloud
+            .to(Bnr.Model.element7, 0.5, { opacity: "1", y: "0", ease: Sine.easeOut }, "-=0.75");
+        },
+
+        preload: function (arr) {
+            console.log(arr);
+            var i;
+            var imageObj = new Image();
+            for (i = 0; i < arr.length; i++) {
+                console.log("*");
+                imageObj.src = arr[i];
+                imageObj.addEventListener("load", Bnr.iLoad, false);
+            }
+        },
+
+        iLoad: function () {
+            console.log("iLoad");
+            Bnr.Model.numImgsLoaded = Bnr.Model.numImgsLoaded + 1;
+            console.log(Bnr.Model.initialLoadComplete);
+            if (Bnr.Model.initialLoadImgs.length === Bnr.Model.numImgsLoaded && Bnr.Model.initialLoadComplete === false) {
+                Bnr.Model.initialLoadComplete = true;
+                Bnr.Model.numImgsLoaded = 0;
+                Bnr.preload(Bnr.Model.addtlLoadImgs);
+            } else {
+                console.log("else");
+                console.log(Bnr.Model.addtlLoadImgs.length);
+                console.log(Bnr.Model.numImgsLoaded);
+                if (Bnr.Model.addtlLoadImgs.length === Bnr.Model.numImgsLoaded) {
+                    console.log("HAha!");
+                    Bnr.init();
+                }
+            }
+        },
+
+        init: function () {
+            console.log("init");
+            Bnr.Model.exit = document.querySelector(".exit");
+            Bnr.Model.bannerContent = document.querySelector(".banner-content");
+            Bnr.Model.frame1 = document.querySelector(".js-frame-1");
+            Bnr.Model.frame2 = document.querySelector(".js-frame-2");
+            Bnr.Model.element1 = document.querySelector(".js-element-1");
+            Bnr.Model.element2 = document.querySelector(".js-element-2");
+            Bnr.Model.element3 = document.querySelector(".js-element-3");
+            Bnr.Model.element4 = document.querySelector(".js-element-4");
+            Bnr.Model.element5 = document.querySelector(".js-element-5 ");
+            Bnr.Model.element6 = document.querySelector(".js-element-6");
+            Bnr.Model.element7 = document.querySelector(".js-element-7 ");
+            Bnr.Model.bannerContent.classList.add("banner-content--active");
+            Bnr.bannerAnimation();
+        }
+    };
+
+    document.addEventListener("DOMContentLoaded", function (e) {
+        console.log("DOMContentLoaded");
+        Bnr.preload(Bnr.Model.initialLoadImgs);
+    });
+  </script>
+
+<body>
+  <div id="container" class="container b-300x250" style="background-color: #fff;">
+    <div class="banner-border"></div>
+    <a class="exit" href="javascript:void(window.open(window.clickTag))"></a>
+    <div class="banner-content">
+      <img src="./images/F0.gif" alt="">
+      <div class="frame frame--1 js-frame-1">
+        <img src="./images/F1.gif" class="frame__slide js-frame-slide" alt="">
+      </div>
+      <div class="frame frame--2 js-frame-2">
+        <img src="./images/tag_bg.jpg" class="frame__slide js-element-1" alt="">
+        <img src="./images/tag_eyebrow.svg" class="frame__slide js-element-2" alt="">
+        <img src="./images/tag_headline1.svg" class="frame__slide js-element-3" alt="">
+        <img src="./images/tag_headline2.svg" class="frame__slide js-element-4" alt="">
+        <img src="./images/tag_cta.svg" class="frame__slide js-element-5" alt="">
+        <img src="./images/tag_logo.svg" class="frame__slide js-element-6" alt="">
+        <img src="./images/tag_cloud.svg" class="frame__slide js-element-7" alt="">
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
