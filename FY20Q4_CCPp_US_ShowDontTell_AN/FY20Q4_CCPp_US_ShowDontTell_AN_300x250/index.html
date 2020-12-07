@@ -185,15 +185,12 @@
     }
 
     .js-frame-slide-1,
-    .js-frame-slide-2 {
+    .js-frame-slide-2,
+    .js-frame-slide-3 {
       left: 0;
       top: 0;
       width: 300px;
       height: 250px;
-    }
-
-    .js-frame-slide-1,
-    .js-frame-slide-2 {
       opacity: 0;
     }
 
@@ -271,8 +268,9 @@
           "./images/F0.jpg"
         ];
       var addtl_load_imgs = [
-          "./images/F1.jpg",
+          "./images/F1.gif",
           "./images/F2.jpg",
+          "./images/F3.jpg",
           "./images/F1_dotted_box.svg",
           "./images/F1_text.svg",
           "./images/tag_cloud.svg",
@@ -298,6 +296,7 @@
       var frame2 = document.querySelector('.js-frame-2');
       var slide1 = document.querySelector('.js-frame-slide-1');
       var slide2 = document.querySelector('.js-frame-slide-2');
+      var slide3 = document.querySelector('.js-frame-slide-3');
       var element2 = document.querySelector('.js-element-2');
       var element3 = document.querySelector('.js-element-3');
       var element4 = document.querySelector('.js-element-4');
@@ -322,9 +321,11 @@
           .to(frame0, 0, { opacity: '1' }, '+=1')
           .to(slide1, .5, { opacity: '1', ease: Sine.easeOut }, '+=0')
           //reveal frame 1
-          .to(frame1, 0, { opacity: '1' }, '+=1')
+          .to(frame1, 0, { opacity: '1' }, '+=0.5')
           //reveal frame 1 slide 2
           .to(slide2, .5, { opacity: '1' }, '+=0')
+          //reveal frame 1 slide 2
+          .to(slide3, .5, { opacity: '1' }, '+=.5')
           // reveal dotted frame
           .to(element2, 0, { css:{scale: 0} }, '+=0')
           .to(element2, .5, { css:{opacity:1, scale: 1}, ease: Sine.easeIn }, '+=0')
@@ -393,6 +394,7 @@
       <div class="frame frame--0 js-frame-0">
         <img src="./images/F1.jpg" class="frame__slide js-frame-slide-1" alt="">
         <img src="./images/F2.jpg" class="frame__slide js-frame-slide-2" alt="">
+        <img src="./images/F3.jpg" class="frame__slide js-frame-slide-3" alt="">
       </div> 
       <div class="frame frame--1 js-frame-1">
         <img src="./images/F1_dotted_box.svg" class="frame__slide js-element-2" alt="">
