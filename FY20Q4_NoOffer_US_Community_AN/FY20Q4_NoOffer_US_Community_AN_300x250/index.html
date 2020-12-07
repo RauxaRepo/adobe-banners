@@ -7,8 +7,8 @@
   <title></title>
   <meta name="ad.size" content="width=300,height=250">
   <script type="text/javascript">
-    var clickTag = "https://www.google.com/";
-    var clickTag2 = "https://www.google.com/";
+    var clickTag = "https://www.adobe.com/creativecloud/renew/resubscribe-promo-sa.html";
+    var clickTag2 = "https://www.adobe.com/creativecloud/renew/resubscribe-promo-sa.html";
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
   <style type="text/css">
@@ -115,27 +115,17 @@
     }
 
 
+    .frame--0 {
+      z-index: 1;
+      opacity: 0;
+    }
+
     .frame--1 {
       z-index: 1;
       opacity: 0;
     }
 
-    .frame--1 .frame__slide {
-      opacity: 1;
-      z-index: 2;
-    }
-
     .frame--2 {
-      z-index: 1;
-      opacity: 0;
-    }
-
-    .frame--2 .frame__slide {
-      opacity: 1;
-      z-index: 2;
-    }
-
-    .frame--3 {
       opacity: 0;
       z-index: 2;
     }
@@ -150,6 +140,115 @@
       right: 0;
       z-index: 0;
     }
+
+    .js-element-1 {
+      opacity: 0;
+    }
+
+    .js-element-2 {
+      left: 20px;
+      top: 90px;
+      width: 260px;
+      height: 66px;
+      opacity: 0;
+    }
+     
+    .js-element-3 {
+      width: 0;
+      overflow: hidden;
+    }
+
+    .js-element-3 img {
+      left: 40px;
+      top: 105px;
+      width: 220px;
+      height: 40px;
+    }
+
+    .f1-wrapper{
+      position:absolute;
+      top:0;
+      width:100%;
+      left:0px;
+      display:block;
+    }
+
+    .f1-img{
+      position:relative;
+      display:block;
+      margin:0 auto;
+      width:300px;
+      height:250px;
+      background:url('./images/F1.jpg') no-repeat;
+      background-position:0px 0px;
+      background-size: 100% auto;
+    }
+
+    .js-frame-slide-1,
+    .js-frame-slide-2,
+    .js-frame-slide-3,
+    .js-frame-slide-4, 
+    .js-frame-slide-5 {
+      left: 0;
+      top: 0;
+      width: 300px;
+      height: 250px;
+      opacity: 0;
+    }
+
+    .js-element-4 {
+      left: 0;
+      top: 0;
+      width: 340px;
+      height: 280px;
+      transform: translateY(+250px);
+    }
+
+    .js-element-5 {
+      left: 20px;
+      top: 28px;
+      width: 123px;
+      height: 19px;
+      opacity: 0;
+      transform: translateY(+80px);
+    }
+
+    .js-element-6 {
+      left: 20px;
+      top: 58px;
+      width: 197px;
+      height: 19px;
+      opacity: 0;
+      transform: translateY(+90px);
+    }
+
+    .js-element-7 {
+      left: 20px;
+      top: 97px;
+      width: 102px;
+      height: 36px;
+      opacity: 0;
+      transform: translateY(+80px);
+    }
+
+    .js-element-8 {
+      left: 20px;
+      top: 165px;
+      width: 54px;
+      height: 65px;
+      opacity: 0;
+      transform: translateY(+40px);
+    }
+
+    .js-element-9 {
+      left: 155px;
+      top: 120px;
+      width: 200px;
+      height: 151px;
+      opacity: 0;
+      transform: translateY(+140px);
+    }
+
   </style>
   
   <script type="text/javascript" charset="utf-8">
@@ -159,12 +258,19 @@
       var loadedImage = 0;
       var initial_load_complete = false;
       var initial_load_imgs = [
-          "./images/F0.gif"
+          "./images/F0.jpg"
         ];
       var addtl_load_imgs = [
-          "./images/F1.gif",
-          "./images/F2.gif",
-          "./images/endframe.gif"
+          "./images/F1.jpg",
+          "./images/F1_bg_mask.png",
+          "./images/F1_dotted_box.svg",
+          "./images/F1_text.svg",
+          "./images/tag_cloud.svg",
+          "./images/tag_cta.svg",
+          "./images/tag_headline1.svg",
+          "./images/tag_headline2.svg",
+          "./images/tag_logo.svg",
+          "./images/tag_bg.jpg"
         ];
       var exit = document.querySelector('.exit');
       var bannerContent = document.querySelector('.banner-content');
@@ -176,9 +282,23 @@
 
 
       // list all animating elements
+      var frame0 = document.querySelector('.js-frame-0');
       var frame1 = document.querySelector('.js-frame-1');
       var frame2 = document.querySelector('.js-frame-2');
-      var frame3 = document.querySelector('.js-frame-3');
+      var slide1 = document.querySelector('.js-frame-slide-1');
+      var slide2 = document.querySelector('.js-frame-slide-2');
+      var slide3 = document.querySelector('.js-frame-slide-3');
+      var slide4 = document.querySelector('.js-frame-slide-4');
+      var slide5 = document.querySelector('.js-frame-slide-5');
+      var element1 = document.querySelector('.js-element-1');
+      var element2 = document.querySelector('.js-element-2');
+      var element3 = document.querySelector('.js-element-3');
+      var element4 = document.querySelector('.js-element-4');
+      var element5 = document.querySelector('.js-element-5');
+      var element6 = document.querySelector('.js-element-6');
+      var element7 = document.querySelector('.js-element-7');
+      var element8 = document.querySelector('.js-element-8');
+      var element9 = document.querySelector('.js-element-9');
 
 
       // timelines
@@ -188,21 +308,40 @@
 
         bannerTL = new TimelineMax({ paused: false });
         bannerTL
-          // reveal frame 1
-          .to(frame1, 0, { opacity: '1', ease: Sine.easeOut }, '+=0')
+          // initialize origin
+          .set(element2, {transformOrigin:"0% 0%"})
+          // reveal frame 0
+          .to(frame0, 0, { opacity: '1' }, '+=1')
+          .to(slide1, .5, { opacity: '1', ease: Sine.easeOut }, '+=0')
+          //reveal frame 1
+          .to(frame1, 0, { opacity: '1' }, '+=0.5')
+          //reveal frame 1 slide 2
+          .to(slide2, .5, { opacity: '1' }, '+=0')
+          //reveal frame 1 slide 3
+          .to(slide3, .5, { opacity: '1' }, '+=.5')
+          //reveal frame 1 slide 4
+          .to(slide4, .5, { opacity: '1' }, '+=.5')
+          //reveal frame 1 slide 5
+          .to(slide5, .5, { opacity: '1' }, '+=.5')
+          // reveal dotted frame
+          .to(element2, 0, { css:{scale: 0} }, '-=0.5')
+          .to(element2, .5, { css:{opacity:1, scale: 1}, ease: Sine.easeIn }, '-=0.4')
+          // reveal text
+          .to(element3, .75, { css:{width: '300px'}, ease: Sine.easeIn }, '-=0')
           // reveal frame 2
-          .to(frame2, .5, { opacity: '1', ease: Sine.easeOut }, '+=5')
-          // reveal endframe
-          .to(frame3, .5, { opacity: '1', ease: Sine.easeOut }, '+=2')
-     
-
-
-        function ctaOnHover() {
-          ctaBtn.classList.toggle('hovered');
-        }
-
-        exit.addEventListener('mouseenter', ctaOnHover);
-        exit.addEventListener('mouseout', ctaOnHover);
+          .to(frame2, 0, { opacity: '1', ease: Sine.easeOut }, '+=1.5')
+          // animate endframe bg
+          .to(element4, 0, { y: '0', ease: Sine.easeIn }, '+=0')
+          // reveal headline1
+          .to(element5, .5, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.0')
+          // reveal headline2
+          .to(element6, .65, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.5')
+          // reveal cta
+          .to(element7, .8, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.65')
+          // reveal logo
+          .to(element8, .5, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0')
+          // reveal cloud
+          .to(element9, .5, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.75') 
       }
 
       function preload(arr) {
@@ -243,17 +382,29 @@
 <body>
   <div id="container" class="container b-300x250" style="background-color: #fff;">
     <div class="banner-border"></div>
-      <a class="exit" href="javascript:void(window.open(window.clickTag))"></a>
-      <div class="banner-content">
-        <img src="./images/F0.gif" alt="">
+    <a class="exit" href="javascript:void(window.open(window.clickTag))"></a>
+    <div class="banner-content">
+      <img src="./images/F0.jpg" alt="">
+
+      <div class="frame frame--0 js-frame-0">
+        <img src="./images/F1.jpg" class="frame__slide js-frame-slide-1" alt="">
+        <img src="./images/F2.jpg" class="frame__slide js-frame-slide-2" alt="">
+        <img src="./images/F3.jpg" class="frame__slide js-frame-slide-3" alt="">
+        <img src="./images/F4.jpg" class="frame__slide js-frame-slide-4" alt="">
+        <img src="./images/F5.jpg" class="frame__slide js-frame-slide-5" alt="">
+      </div> 
       <div class="frame frame--1 js-frame-1">
-        <img src="./images/F1.gif" class="frame__slide js-frame-slide" alt="">
+        <img src="./images/F1_bg_mask.png" class="frame__slide js-element-1" alt="">
+        <img src="./images/F1_dotted_box.svg" class="frame__slide js-element-2" alt="">
+        <div class="frame__slide js-element-3"><img src="./images/F1_text.svg" class="frame__slide" alt=""></div>
       </div>
       <div class="frame frame--2 js-frame-2">
-        <img src="./images/F2.gif" class="frame__slide js-frame-slide" alt="">
-      </div>
-      <div class="frame frame--3 js-frame-3">
-        <img src="./images/endframe.gif" class="frame__slide js-frame-slide" alt="">
+        <img src="./images/tag_bg.jpg" class="frame__slide js-element-4" alt="">
+        <img src="./images/tag_headline1.svg" class="frame__slide js-element-5" alt="">
+        <img src="./images/tag_headline2.svg" class="frame__slide js-element-6" alt="">
+        <img src="./images/tag_cta.svg" class="frame__slide js-element-7" alt="">
+        <img src="./images/tag_logo.svg" class="frame__slide js-element-8" alt="">
+        <img src="./images/tag_cloud.svg" class="frame__slide js-element-9" alt="">
       </div>
     </div>
   </div>
