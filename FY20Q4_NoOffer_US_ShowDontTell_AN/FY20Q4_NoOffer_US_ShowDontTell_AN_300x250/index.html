@@ -268,7 +268,6 @@
           "./images/F0.jpg"
         ];
       var addtl_load_imgs = [
-          "./images/F1.jpg",
           "./images/F1_bg_mask.png",
           "./images/F1_dotted_box.svg",
           "./images/F1_text.svg",
@@ -290,7 +289,6 @@
 
 
       // list all animating elements
-      var frame0 = document.querySelector('.js-frame-0');
       var frame1 = document.querySelector('.js-frame-1');
       var frame2 = document.querySelector('.js-frame-2');
       var slide1 = document.querySelector('.js-frame-slide-1');
@@ -315,16 +313,13 @@
         bannerTL
           // initialize origin
           .set(element2, {transformOrigin:"0% 0%"})
-          // reveal frame 0
-          .to(frame0, 0, { opacity: '1' }, '+=1')
-          .to(slide1, .5, { opacity: '1', ease: Sine.easeOut }, '+=0')
           //reveal frame 1
           .to(frame1, 0, { opacity: '1' }, '-=0.5')
           // reveal bg mask
-          .to(element1, .5, { opacity: '1', ease: Sine.easeOut }, '-=0.5')
+          .to(element1, .5, { opacity: '1', ease: Sine.easeOut }, '+=1')
           // reveal dotted frame
-          .to(element2, 0, { css:{scale: 0} }, '+=0')
-          .to(element2, .5, { css:{opacity:1, scale: 1}, ease: Sine.easeIn }, '+=0')
+          .to(element2, 0, { css:{scale: 0} }, '-=0.5')
+          .to(element2, .5, { css:{opacity:1, scale: 1}, ease: Sine.easeIn }, '-=0.2')
           .to(element3b, 0, { opacity:1 }, '+=0.1')
           // reveal text
           .to(element3, 0.8, { css:{width: '300px'}, ease: Sine.easeIn }, '-=0.1')
@@ -389,10 +384,6 @@
     <a class="exit" href="javascript:void(window.open(window.clickTag))"></a>
     <div class="banner-content">
       <img src="./images/F0.jpg" alt="">
-
-      <div class="frame frame--0 js-frame-0">
-        <img src="./images/F1.jpg" class="frame__slide js-frame-slide-1" alt="">
-      </div> 
       <div class="frame frame--1 js-frame-1">
         <img src="./images/F1_bg_mask.png" class="frame__slide js-element-1" alt="">
         <img src="./images/F1_dotted_box.svg" class="frame__slide js-element-2" alt="">
