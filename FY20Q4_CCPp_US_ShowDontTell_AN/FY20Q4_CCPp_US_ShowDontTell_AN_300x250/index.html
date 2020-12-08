@@ -152,6 +152,14 @@
       height: 66px;
       opacity: 0;
     }
+
+    .js-element-3b {
+      left: -94px;
+      top: 109px;
+      width: 267px;
+      height: 30px;
+      opacity: 0;
+    }
      
     .js-element-3 {
       width: 0;
@@ -182,16 +190,6 @@
       background:url('./images/F1.jpg') no-repeat;
       background-position:0px 0px;
       background-size: 100% auto;
-    }
-
-    .js-frame-slide-1,
-    .js-frame-slide-2,
-    .js-frame-slide-3 {
-      left: 0;
-      top: 0;
-      width: 300px;
-      height: 250px;
-      opacity: 0;
     }
 
     .js-element-4 {
@@ -268,9 +266,7 @@
           "./images/F0.jpg"
         ];
       var addtl_load_imgs = [
-          "./images/F1.jpg",
-          "./images/F2.jpg",
-          "./images/F3.jpg",
+          "./images/F1_cursor.svg",
           "./images/F1_dotted_box.svg",
           "./images/F1_text.svg",
           "./images/tag_cloud.svg",
@@ -294,11 +290,9 @@
       var frame0 = document.querySelector('.js-frame-0');
       var frame1 = document.querySelector('.js-frame-1');
       var frame2 = document.querySelector('.js-frame-2');
-      var slide1 = document.querySelector('.js-frame-slide-1');
-      var slide2 = document.querySelector('.js-frame-slide-2');
-      var slide3 = document.querySelector('.js-frame-slide-3');
       var element2 = document.querySelector('.js-element-2');
       var element3 = document.querySelector('.js-element-3');
+      var element3b = document.querySelector('.js-element-3b');
       var element4 = document.querySelector('.js-element-4');
       var element5 = document.querySelector('.js-element-5');
       var element6 = document.querySelector('.js-element-6');
@@ -317,22 +311,20 @@
         bannerTL
           // initialize origin
           .set(element2, {transformOrigin:"0% 0%"})
-          // reveal frame 0
-          .to(frame0, 0, { opacity: '1' }, '+=1')
-          .to(slide1, .5, { opacity: '1', ease: Sine.easeOut }, '+=0')
-          //reveal frame 1
-          .to(frame1, 0, { opacity: '1' }, '+=0.5')
-          //reveal frame 1 slide 2
-          .to(slide2, .5, { opacity: '1' }, '+=0')
-          //reveal frame 1 slide 2
-          .to(slide3, .5, { opacity: '1' }, '+=.5')
+          // reveal frame 1
+          .to(frame1 , 0, { opacity: '1' }, '+=0')
           // reveal dotted frame
-          .to(element2, 0, { css:{scale: 0} }, '+=0')
+          .to(element2, 0, { css:{scale: 0} }, '+=.5')
           .to(element2, .5, { css:{opacity:1, scale: 1}, ease: Sine.easeIn }, '+=0')
+          .to(element3b, 0, { opacity:1 }, '+=0.1')
           // reveal text
-          .to(element3, .75, { css:{width: '300px'}, ease: Sine.easeIn }, '-=0')
+          .to(element3, 0.8, { css:{width: '300px'}, ease: Sine.easeIn }, '-=0.1')
+          .to(element3b, 0.8, { css:{left: '130px'}, ease: Sine.easeIn }, '-=0.8')
+          .to(element3b, 0, { opacity:0 }, '+=0.15')
+          .to(element3b, 0, { opacity:1 }, '+=0.15')
+          .to(element3b, 0, { opacity:0 }, '+=0.15')
           // reveal frame 2
-          .to(frame2, 0, { opacity: '1', ease: Sine.easeOut }, '+=1.5')
+           .to(frame2, 0, { opacity: '1', ease: Sine.easeOut }, '+=1.5')
           // animate endframe bg
           .to(element4, 0, { y: '0', ease: Sine.easeIn }, '+=0')
           // reveal headline1
@@ -346,7 +338,7 @@
           // reveal logo
           .to(element9, .5, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.25')
           // reveal cloud
-          .to(element10, .5, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.75')
+          .to(element10, .5, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.75') 
       }
 
       function preload(arr) {
@@ -390,15 +382,10 @@
     <a class="exit" href="javascript:void(window.open(window.clickTag))"></a>
     <div class="banner-content">
       <img src="./images/F0.jpg" alt="">
-
-      <div class="frame frame--0 js-frame-0">
-        <img src="./images/F1.jpg" class="frame__slide js-frame-slide-1" alt="">
-        <img src="./images/F2.jpg" class="frame__slide js-frame-slide-2" alt="">
-        <img src="./images/F3.jpg" class="frame__slide js-frame-slide-3" alt="">
-      </div> 
       <div class="frame frame--1 js-frame-1">
         <img src="./images/F1_dotted_box.svg" class="frame__slide js-element-2" alt="">
         <div class="frame__slide js-element-3"><img src="./images/F1_text.svg" class="frame__slide" alt=""></div>
+        <img src="./images/F1_cursor.svg" class="frame__slide js-element-3b" alt="">
       </div>
       <div class="frame frame--2 js-frame-2">
         <img src="./images/tag_bg.jpg" class="frame__slide js-element-4" alt="">
