@@ -322,10 +322,10 @@
           //reveal frame 1
           .to(frame1, 0, { opacity: '1' }, '+=0.5')
           // reveal bg mask
-          .to(element1, .5, { opacity: '1', ease: Sine.easeOut }, '+=1')
+          .to(element1, .5, { opacity: '1', ease: Sine.easeOut }, '+=2')
           // reveal dotted frame
-          .to(element2, 0, { css:{scale: 0} }, '+=0')
-          .to(element2, .5, { css:{opacity:1, scale: 1}, ease: Sine.easeIn }, '-=0')
+          .to(element2, 0, { css:{scale: 0} }, '-=1')
+          .to(element2, .5, { css:{opacity:1, scale: 1}, ease: Sine.easeIn }, '-=1')
           .to(element3b, 0, { opacity:1 }, '+=0.1')
           // reveal text
           .to(element3, 0.8, { css:{width: '300px'}, ease: Sine.easeIn }, '-=0.1')
