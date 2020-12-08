@@ -325,17 +325,9 @@
           .to(slide1, .5, { opacity: '1', ease: Sine.easeOut }, '+=0')
           //reveal frame 1
           .to(frame1, 0, { opacity: '1' }, '+=0.5')
-          //reveal frame 1 slide 2
-          .to(slide2, .5, { opacity: '1' }, '+=0')
-          //reveal frame 1 slide 3
-          .to(slide3, .5, { opacity: '1' }, '+=.5')
-          //reveal frame 1 slide 4
-          .to(slide4, .5, { opacity: '1' }, '+=.5')
-          //reveal frame 1 slide 5
-          .to(slide5, .5, { opacity: '1' }, '+=.5')
           // reveal dotted frame
-          .to(element2, 0, { css:{scale: 0} }, '-=0.5')
-          .to(element2, .5, { css:{opacity:1, scale: 1}, ease: Sine.easeIn }, '-=0.4')
+          .to(element2, 0, { css:{scale: 0} }, '+=4.25')
+          .to(element2, .5, { css:{opacity:1, scale: 1}, ease: Sine.easeIn }, '-=0')
           .to(element3b, 0, { opacity:1 }, '+=0.1')
           // reveal text
           .to(element3, 0.8, { css:{width: '300px'}, ease: Sine.easeIn }, '-=0.1')
@@ -402,11 +394,7 @@
       <img src="./images/F0.jpg" alt="">
 
       <div class="frame frame--0 js-frame-0">
-        <img src="./images/F1.jpg" class="frame__slide js-frame-slide-1" alt="">
-        <img src="./images/F2.jpg" class="frame__slide js-frame-slide-2" alt="">
-        <img src="./images/F3.jpg" class="frame__slide js-frame-slide-3" alt="">
-        <img src="./images/F4.jpg" class="frame__slide js-frame-slide-4" alt="">
-        <img src="./images/F5.jpg" class="frame__slide js-frame-slide-5" alt="">
+        <img src="./images/F0.gif" class="frame__slide js-frame-slide-1" alt="">
       </div> 
       <div class="frame frame--1 js-frame-1">
         <img src="./images/F1_bg_mask.png" class="frame__slide js-element-1" alt="">
