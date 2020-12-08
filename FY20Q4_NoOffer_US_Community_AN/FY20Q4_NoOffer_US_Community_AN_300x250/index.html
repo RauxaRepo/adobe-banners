@@ -269,6 +269,7 @@
           "./images/F0.jpg"
         ];
       var addtl_load_imgs = [
+          "./images/F1_bg_mask.png",
           "./images/F1.gif",
           "./images/F1_dotted_box.svg",
           "./images/F1_text.svg",
@@ -294,6 +295,7 @@
       var frame1 = document.querySelector('.js-frame-1');
       var frame2 = document.querySelector('.js-frame-2');
       var slide1 = document.querySelector('.js-frame-slide-1');
+      var element1 = document.querySelector('.js-element-1');
       var element2 = document.querySelector('.js-element-2');
       var element3 = document.querySelector('.js-element-3');
       var element3b = document.querySelector('.js-element-3b');
@@ -319,8 +321,10 @@
           .to(slide1, .5, { opacity: '1', ease: Sine.easeOut }, '+=0')
           //reveal frame 1
           .to(frame1, 0, { opacity: '1' }, '+=0.5')
+          // reveal bg mask
+          .to(element1, .5, { opacity: '1', ease: Sine.easeOut }, '+=1')
           // reveal dotted frame
-          .to(element2, 0, { css:{scale: 0} }, '+=4.25')
+          .to(element2, 0, { css:{scale: 0} }, '+=0')
           .to(element2, .5, { css:{opacity:1, scale: 1}, ease: Sine.easeIn }, '-=0')
           .to(element3b, 0, { opacity:1 }, '+=0.1')
           // reveal text
@@ -391,6 +395,7 @@
         <img src="./images/F1.gif" class="frame__slide js-frame-slide-1" alt="">
       </div> 
       <div class="frame frame--1 js-frame-1">
+        <img src="./images/F1_bg_mask.png" class="frame__slide js-element-1" alt="">
         <img src="./images/F1_dotted_box.svg" class="frame__slide js-element-2" alt="">
         <div class="frame__slide js-element-3"><img src="./images/F1_text.svg" class="frame__slide" alt=""></div>
         <img src="./images/F1_cursor.svg" class="frame__slide js-element-3b" alt="">
