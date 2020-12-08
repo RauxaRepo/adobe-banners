@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title></title>
+  <meta name="ad.size" content="width=300,height=250">
+  <script type="text/javascript">
+    var clickTag = "https://commerce.adobe.com/checkout?cli=creative&co=US&lang=en&items%5B0%5D%5Bid%5D=2BCCAF555646E0EEE99F3AD8C2FDC7B3&items%5B0%5D%5Bcs%5D=0";
+    var clickTag2 = "https://commerce.adobe.com/checkout?cli=creative&co=US&lang=en&items%5B0%5D%5Bid%5D=2BCCAF555646E0EEE99F3AD8C2FDC7B3&items%5B0%5D%5Bcs%5D=0";
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+  <style type="text/css">
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    * {
+      padding: 0;
+    }
+
+    .container {
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .banner-content {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      display: none;
+      z-index: 1;
+    }
+
+    .banner-content.banner-content--active {
+      opacity: 1;
+      display: block;
+    }
+
+    .b-300x250 {
+      width: 300px;
+      height: 250px;
+      padding: 0;
+    }
+
+    /*CTA BTN*/
+    .btn-container {
+      width: 300px;
+      height: 250px;
+      background-color: transparent;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 100;
+      cursor: pointer;
+    }
+
+    img {
+      width: 300px;
+      height: 250px;
+    }
+
+    .cta-btn {
+      background-color: #fff;
+      opacity: 1;
+      width: 130px;
+      height: 35px;
+      border-radius: 6px;
+      top: 192px;
+      left: 85px;
+      position: absolute;
+      z-index: 0;
+    }
+
+    .cta-btn.hovered {
+      transform: scale(1.05);
+    }
+
+
+    .banner-border {
+      position: absolute;
+      width: 298px;
+      height: 248px;
+      border: 1px solid #000000;
+      pointer-events: none;
+      z-index: 6;
+      top: 0px;
+      left: 0px;
+    }
+
+    .exit {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+      top: 0;
+      left: 0;
+      cursor: pointer;
+    }
+
+
+    .frame {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+
+    .frame--1 {
+      z-index: 1;
+      opacity: 0;
+    }
+
+    .frame--1 .frame__slide {
+      z-index: 2;
+    }
+
+    .frame__background, .frame__slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 0;
+    }
+
+    .js-element-1 {
+      left: 20px;
+      top: 4px;
+      width: 256px;
+      height: 250px;
+      opacity: 1;
+    }
+
+    .js-element-2 {
+      left: 114px;
+      top: 70px;
+      width: 186px;
+      height: 179px;
+    }
+
+    .js-element-3 {
+      left: 114px;
+      top: 70px;
+      width: 186px;
+      height: 179px;
+      opacity: 0;
+    }
+
+    .js-element-4 {
+      left: 162px;
+      top: 103px;
+      width: 54px;
+      height: 54px;
+      opacity: 0;
+    }
+
+    .js-element-5 {
+      left: 167px;
+      top: 179px;
+      width: 17px;
+      height: 17px;
+    }
+  </style>
+  
+  <script type="text/javascript" charset="utf-8">
+    document.addEventListener("DOMContentLoaded", function (e) {
+      
+      // variables
+      var loadedImage = 0;
+      var initial_load_complete = false;
+      var initial_load_imgs = [
+          "./images/F0.png"
+        ];
+      var addtl_load_imgs = [
+        "./images/F1_copy-cta-logo.svg",
+        "./images/F1_phone.png",
+        "./images/F1_phone2.png",
+        "./images/F1_icon.png",
+        "./images/F1_cursor.png"
+        ];
+      var exit = document.querySelector('.exit');
+      var bannerContent = document.querySelector('.banner-content');
+
+      var bannerConfig = {
+        width: 300,
+        height: 250
+      }
+
+
+      // list all animating elements
+      var frame1 = document.querySelector('.js-frame-1');
+      var element1 = document.querySelector('.js-element-1');
+      var element2 = document.querySelector('.js-element-2');
+      var element3 = document.querySelector('.js-element-3');
+      var element4 = document.querySelector('.js-element-4');
+      var element5 = document.querySelector('.js-element-5');
+
+      // timelines
+      var bannerTL;
+
+      function bannerAnimation() {
+
+        bannerTL = new TimelineMax({ paused: false });
+        bannerTL
+          // reveal frame 1
+          .to(frame1, 0, { opacity: '1', ease: Sine.easeOut }, '+=0')
+          // animate cursor
+          .to(element5, 0.8, { bezier: { type: "quadratic", values: [{x:'0',y:'0'},{x:'20',y:'-50'},{x:'20',y:'-60'}]}, ease: Quad.easeOut },'+=1')
+          // click
+          .to(element5, .12, { scale: '0.8', repeat:1, yoyo:true, ease: Sine.easeOut }, '+=0.0')
+          // reveal icon
+          .to(element4, 0, { scale: '0.2' }, '-=0')
+          .to(element4, .25, { scale: '1', opacity: '1', x:'-40', y:'40', ease: Sine.easeIn }, '-=0')
+          .to(element4, .25, { scale: '1.2', repeat:1, yoyo:true, ease: Sine.easeInOut }, '-=0')
+          // reveal phone state 2
+          .to(element2, 0, { opacity: '0'}, '-=0.8')
+          .to(element3, 0, { opacity: '1'}, '-=0.8')
+          // reveal cta
+          /* .to(element5, .8, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.65')
+          // reveal logo
+          .to(element6, .5, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.5')
+          // reveal cloud
+          .to(element7, .5, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.75') */
+
+      }
+
+      function preload(arr) {
+        
+        for (var i = 0; i < arr.length; i++) {
+          var imageObj = new Image();
+          imageObj.src = arr[i];
+          imageObj.addEventListener("load", iLoad, false);
+        }
+
+      }
+
+      function iLoad() {
+        
+        loadedImage++;
+        if (initial_load_imgs.length == loadedImage && initial_load_complete == false) {
+          initial_load_complete = true;
+          loadedImage = 0;
+          preload(addtl_load_imgs);
+        } else {
+          if (addtl_load_imgs.length == loadedImage) {
+            init();
+          }
+        }
+      }
+
+      function init() {
+        
+        bannerContent.classList.add('banner-content--active');
+        bannerAnimation();
+
+      }
+
+      preload(initial_load_imgs);
+    });
+  </script>
+
+<body>
+  <div id="container" class="container b-300x250" style="background-color: #fff;">
+    <div class="banner-border"></div>
+    <a class="exit" href="javascript:void(window.open(window.clickTag))"></a>
+    <div class="banner-content">
+      <img src="./images/F0.png" alt="">
+      <div class="frame frame--1 js-frame-1">
+        <img src="./images/F1_copy-cta-logo.svg" class="frame__slide js-element-1" alt="">
+        <img src="./images/F1_phone.png" class="frame__slide js-element-2" alt="">
+        <img src="./images/F1_phone2.png" class="frame__slide js-element-3" alt="">
+        <img src="./images/F1_icon.png" class="frame__slide js-element-4" alt="">
+        <img src="./images/F1_cursor.png" class="frame__slide js-element-5" alt="">
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
