@@ -168,86 +168,100 @@
   </style>
   
   <script type="text/javascript" charset="utf-8">
-    document.addEventListener("DOMContentLoaded", function (e) {
-      
-      // variables
-      var loadedImage = 0;
-      var initial_load_complete = false;
-      var initial_load_imgs = [
-          "./images/F0.png"
-        ];
-      var addtl_load_imgs = [
-        "./images/F1_copy-cta-logo.svg",
-        "./images/F1_tablet.png",
-        "./images/F1_icon.png",
-        "./images/F1_popup.png"
-        ];
-      var exit = document.querySelector('.exit');
-      var bannerContent = document.querySelector('.banner-content');
+    var Bnr = window.Bnr || {};
+    window.onload = function () {
+      "use strict";
 
-      var bannerConfig = {
-        width: 300,
-        height: 250
-      }
+      Bnr = {
+        Model: {
+          BANNER_CONFIG: {
+            width: 300,
+            height: 250
+          },
 
+          DOM_ELEMENTS: {
+            NUM_OF_FRAMES: 1,
+            NUM_OF_ITEMS: 5
+          },
 
-      // list all animating elements
-      var frame1 = document.querySelector('.js-frame-1');
-      var element1 = document.querySelector('.js-element-1');
-      var element2 = document.querySelector('.js-element-2');
-      var element3 = document.querySelector('.js-element-3');
-      var element4 = document.querySelector('.js-element-4');
+          BANNER_TL: "",
 
-      // timelines
-      var bannerTL;
+          INITIAL_IMGS_TO_LOAD: [
+            "./images/F0.png"
+          ],
 
-      function bannerAnimation() {
+          ADDTNL_IMGS_TO_LOAD: [
+            "./images/F1_copy-cta-logo.svg",
+            "./images/F1_tablet.png",
+            "./images/F1_icon.png",
+            "./images/F1_popup.png"
+          ],
 
-        bannerTL = new TimelineMax({ paused: false });
-        bannerTL
-          // reveal frame 1
-          .to(frame1, 0, { opacity: '1', ease: Sine.easeOut }, '+=0')
-          // animate icon
-          .to(element4, .25, { opacity: 1, scale: '1', }, '+=1')
-          .to(element4, .12, { scale: '1.2', repeat:1, yoyo:true, ease: Sine.easeOut }, '-=0.25')
-          // animate popup
-          .to(element3, .25, { opacity: 1, scale: '0', }, '+=0.5')
-          .to(element3, .12, { scale: '1.2', repeat:1, yoyo:true, ease: Sine.easeOut }, '-=0.25')
-      }
+          Status: {
+            numOfImgsLoaded: 0,
+            initialLoadComplete: false
+          }
+        },
 
-      function preload(arr) {
-        
-        for (var i = 0; i < arr.length; i++) {
-          var imageObj = new Image();
-          imageObj.src = arr[i];
-          imageObj.addEventListener("load", iLoad, false);
-        }
+        View: {
+          init: function () {
+            Bnr.Model.BANNER_TL = new TimelineMax({ paused: false });
+            Bnr.Model.BANNER_TL
+            // reveal frame 1
+            .to(Bnr.Model.DOM_ELEMENTS.FRAME1, 0, { opacity: "1", ease: Sine.easeOut }, "+=0")
+            // animate icon
+            .to(Bnr.Model.DOM_ELEMENTS.ELEMENT3, 0.25, { opacity: 1, scale: "1" }, "+=1")
+            .to(Bnr.Model.DOM_ELEMENTS.ELEMENT3, 0.12, { scale: "1.2", repeat:1, yoyo:true, ease: Sine.easeOut }, "-=00.25")
+            // animate popup
+            .to(Bnr.Model.DOM_ELEMENTS.ELEMENT4, 0.25, { opacity: 1, scale: "0" }, "+=0.5")
+            .to(Bnr.Model.DOM_ELEMENTS.ELEMENT4, 0.12, { scale: "1.2", repeat:1, yoyo:true, ease: Sine.easeOut }, "-=00.25");
+          }
+        },
 
-      }
+        Controller: {
+          preload: function (arr) {
+            var i = 0;
+            var imgObj;
+            while (i < arr.length) {
+              imgObj = new Image();
+              imgObj.src = arr[i];
+              imgObj.addEventListener("load", Bnr.Controller.imageHasLoaded, false);
+              i += 1;
+            }
+          },
 
-      function iLoad() {
-        
-        loadedImage++;
-        if (initial_load_imgs.length == loadedImage && initial_load_complete == false) {
-          initial_load_complete = true;
-          loadedImage = 0;
-          preload(addtl_load_imgs);
-        } else {
-          if (addtl_load_imgs.length == loadedImage) {
-            init();
+          imageHasLoaded: function () {
+            Bnr.Model.Status.numOfImgsLoaded += 1;
+            if (Bnr.Model.Status.numOfImgsLoaded === Bnr.Model.INITIAL_IMGS_TO_LOAD.length && Bnr.Model.Status.initialLoadComplete === false) {
+              Bnr.Model.Status.initialLoadComplete = true;
+              Bnr.Model.Status.numOfImgsLoaded = 0;
+              Bnr.Controller.preload(Bnr.Model.ADDTNL_IMGS_TO_LOAD);
+            } else if (Bnr.Model.Status.numOfImgsLoaded === Bnr.Model.ADDTNL_IMGS_TO_LOAD.length) {
+                Bnr.Controller.init();
+            }
+          },
+
+          init: function () {
+            var i = 1;
+            Bnr.Model.DOM_ELEMENTS.BANNER_CONTENT = document.querySelector(".banner-content");
+            Bnr.Model.DOM_ELEMENTS.EXIT = document.querySelector(".exit");
+            while (i < Bnr.Model.DOM_ELEMENTS.NUM_OF_FRAMES) {
+              Bnr.Model.DOM_ELEMENTS["FRAME" + i] = document.querySelector(".js-element-" + i);
+              i += 1;
+            }
+            Bnr.Model.DOM_ELEMENTS.FRAME1 = document.querySelector(".js-frame-1");
+            i = 1;
+            while (i < Bnr.Model.DOM_ELEMENTS.NUM_OF_ITEMS) {
+              Bnr.Model.DOM_ELEMENTS["ELEMENT" + i] = document.querySelector(".js-element-" + i);
+              i += 1;
+            }
+            Bnr.Model.DOM_ELEMENTS.BANNER_CONTENT.classList.add("banner-content--active");
+            Bnr.View.init();
           }
         }
-      }
-
-      function init() {
-        
-        bannerContent.classList.add('banner-content--active');
-        bannerAnimation();
-
-      }
-
-      preload(initial_load_imgs);
-    });
+      };
+      Bnr.Controller.preload(Bnr.Model.INITIAL_IMGS_TO_LOAD);
+    };
   </script>
 
 <body>
