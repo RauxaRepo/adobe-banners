@@ -220,14 +220,15 @@
           .to(element5, 0.8, { bezier: { type: "quadratic", values: [{x:'0',y:'0'},{x:'20',y:'-50'},{x:'20',y:'-60'}]}, ease: Quad.easeOut },'+=1')
           // click
           .to(element5, .12, { scale: '0.8', repeat:1, yoyo:true, ease: Sine.easeOut }, '+=0.0')
+          // reveal phone state 2
+          .to(element2, 0, { opacity: '0'}, '-=0')
+          .to(element3, 0, { opacity: '1'}, '-=0')
+          .to(element5, 0.5, { opacity: '0'}, '+=0.2')
           // reveal icon
-          .to(element4, 0, { scale: '0.2' }, '-=0')
+          .to(element4, 0, { scale: '0.2' }, '+=0.15')
           .to(element4, .25, { scale: '1', opacity: '1', x:'-40', y:'40', ease: Sine.easeIn }, '-=0')
           .to(element4, .25, { scale: '1.2', repeat:1, yoyo:true, ease: Sine.easeInOut }, '-=0')
-          // reveal phone state 2
-          .to(element2, 0, { opacity: '0'}, '-=0.8')
-          .to(element3, 0, { opacity: '1'}, '-=0.8')
-          .to(element5, 0.5, { opacity: '0'}, '-=0.2')
+          
           // reveal cta
           /* .to(element5, .8, { opacity: '1', y: '0', ease: Sine.easeOut }, '-=0.65')
           // reveal logo
