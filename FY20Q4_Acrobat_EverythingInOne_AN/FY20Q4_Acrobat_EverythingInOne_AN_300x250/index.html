@@ -11,13 +11,12 @@
       </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
     <style type="text/css">
-      body {
-        padding: 0;
-        margin: 0;
-      }
-      
       * {
         padding: 0;
+      }
+
+      body {
+        margin: 0;
       }
       
       .container {
@@ -28,29 +27,27 @@
         height: 250px;
       }
       
-      .banner-border {
-        position: absolute;
-        width: 298px;
-        height: 248px;
-        border: 1px solid #D5D5D5;
-        pointer-events: none;
-        z-index: 6;
-        top: 0px;
-        left: 0px;
-      }
-
       .banner-content {
         position: absolute;
         width: 100%;
         height: 100%;
         opacity: 0;
         display: none;
-        z-index: 1;
+        z-index: 100;
       }
 
       .banner-content.banner-content--active {
         opacity: 1;
         display: block;
+      }
+
+      .banner-border {
+        position: absolute;
+        border: 1px solid #D5D5D5;
+        pointer-events: none;
+        z-index: 200;
+        top: 0px;
+        left: 0px;
       }
      
       .exit {
@@ -63,7 +60,7 @@
         display: flex;
         align-items: flex-end;
         justify-content: center;
-        z-index: 100;
+        z-index: 201;
         cursor: pointer;
       }
 
@@ -75,7 +72,7 @@
         bottom: 0;
         left: 0;
         right: 0;
-        z-index: 0;
+        z-index: 101;
         opacity: 0;
       }
 
@@ -87,12 +84,7 @@
         bottom: 0;
         left: 0;
         right: 0;
-        z-index: 0;
-      }
-      
-      .frame-1 {
-        z-index: 1;
-        opacity: 0;
+        z-index: 102;
       }
       
       .image-1 {
@@ -136,11 +128,6 @@
               width: 300,
               height: 250
             },
-            DOM_ELEMENTS: {
-              NUM_OF_FRAMES: 1,
-              NUM_OF_IMGS: 4
-            },
-            BANNER_TL: "",
             INITIAL_IMGS_TO_LOAD: ["./images/F0.png"],
             ADDTNL_IMGS_TO_LOAD: [
               "./images/F1_copy-cta-logo.svg",
@@ -148,6 +135,7 @@
               "./images/F1_tablet.png",
               "./images/F1_phone.png"
             ],
+            DOM_ELEMENTS: {},
             Status: {
               numOfImgsLoaded: 0,
               initialLoadComplete: false
@@ -155,10 +143,10 @@
           },
           View: {
             init: function() {
-              Bnr.Model.BANNER_TL = new TimelineMax({
+              var TL = new TimelineMax({
                 paused: false
               });
-              Bnr.Model.BANNER_TL
+              TL
               // reveal frame 1
               .to(Bnr.Model.DOM_ELEMENTS.FRAME1, 0, { opacity: '1', ease: Sine.easeOut }, '+=0')
               // animate pc
@@ -192,17 +180,28 @@
               }
             },
             init: function() {
+              // size container
+              var c = document.getElementById("container");
+              var bdr = document.querySelector(".banner-border");
               var i = 1;
+              c.style.width = Bnr.Model.BANNER_CONFIG.width + 'px';;
+              c.style.height = Bnr.Model.BANNER_CONFIG.height + 'px';;
+              bdr.style.width = (Bnr.Model.BANNER_CONFIG.width - 2) + 'px';
+              bdr.style.height = (Bnr.Model.BANNER_CONFIG.height - 2) + 'px';
+              // retrieve DOM elements
+              var NUM_OF_FRAMES = document.getElementsByClassName("frame").length;
+              var NUM_OF_IMGS = document.getElementsByClassName("frame__img").length;
               Bnr.Model.DOM_ELEMENTS.BANNER_CONTENT = document.querySelector(".banner-content");
-              while(i <= Bnr.Model.DOM_ELEMENTS.NUM_OF_FRAMES) {
+              while(i <= NUM_OF_FRAMES) {
                 Bnr.Model.DOM_ELEMENTS["FRAME" + i] = document.querySelector(".frame-" + i);
                 i += 1;
               }
               i = 1;
-              while(i <= Bnr.Model.DOM_ELEMENTS.NUM_OF_IMGS) {
+              while(i <= NUM_OF_IMGS) {
                 Bnr.Model.DOM_ELEMENTS["IMG" + i] = document.querySelector(".image-" + i);
                 i += 1;
               }
+              // reveal banner
               Bnr.Model.DOM_ELEMENTS.BANNER_CONTENT.classList.add("banner-content--active");
               Bnr.View.init();
             }
@@ -214,8 +213,6 @@
   <head>
   <body>
 	<div id="container" class="container" style="background-color: #fff;">
-	  <div class="banner-border"></div>
-	  <a class="exit" href="javascript:void(window.open(window.clickTag))"></a>
 	  <div class="banner-content">
           <img src="./images/F0.png" alt="">
 		  <div class="frame frame-1">
@@ -224,7 +221,9 @@
             <img src="./images/F1_tablet.png" class="frame__img image-3" alt="">
             <img src="./images/F1_phone.png" class="frame__img image-4" alt="">
           </div>
-	  </div>
+    </div>
+    <div class="banner-border"></div>
+	  <a class="exit" href="javascript:void(window.open(window.clickTag))"></a>
 	</div>
   </body>
 </html>
