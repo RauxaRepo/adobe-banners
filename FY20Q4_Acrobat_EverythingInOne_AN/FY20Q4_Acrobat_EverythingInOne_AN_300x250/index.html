@@ -148,14 +148,29 @@
               });
               TL
               // reveal frame 1
-              .to(Bnr.Model.DOM_ELEMENTS.FRAME1, 0, { opacity: '1', ease: Sine.easeOut }, '+=0')
+              .to(Bnr.Model.DOM_ELEMENTS.FRAME1, 0, {
+                opacity: '1', 
+                ease: Sine.easeOut
+              }, '+=0')
               // animate pc
-              .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0.5, { y: '+180', ease: Sine.easeOut },'+=1')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0.5, {
+                y: '+180',
+                ease: Sine.easeOut
+              },'+=1')
               // animate tablet
-              .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0.5, { x: '0', ease: Sine.easeOut },'-=0.25')
-              .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0.5, { y: '+180', ease: Sine.easeOut },'+=1.5')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0.5, {
+                x: '0',
+                ease: Sine.easeOut
+              },'-=0.25')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0.5, {
+                y: '+180',
+                ease: Sine.easeOut
+              },'+=1.5')
               // animate phone
-              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.5, { x: '0', ease: Sine.easeOut },'-=0.3');
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.5, {
+                x: '0',
+                ease: Sine.easeOut
+              },'-=0.3');
             }
           },
           Controller: {

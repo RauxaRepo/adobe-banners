@@ -156,19 +156,55 @@
               });
               TL
               // reveal frame 1
-              .to(Bnr.Model.DOM_ELEMENTS.FRAME1, 0, { opacity: '1', ease: Sine.easeOut }, '+=0')
+              .to(Bnr.Model.DOM_ELEMENTS.FRAME1, 0, {
+                opacity: '1',
+                ease: Sine.easeOut
+              }, '+=0')
               // animate cursor
-              .to(Bnr.Model.DOM_ELEMENTS.IMG5, 1.2, { bezier: { type: "quadratic", values: [{x:'0',y:'0'},{x:'5',y:'-50'},{x:'20',y:'-160'}]}, ease: Quad.easeInOut },'+=1')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG5, 1.2, {
+                bezier: {
+                  type: "quadratic", values: [{
+                    x:'0',
+                    y:'0'
+                  },{
+                    x:'5',
+                    y:'-50'
+                  },{
+                    x:'20',
+                    y:'-160'}]
+                  }, ease: Quad.easeInOut
+                },'+=1')
               // click
-              .to(Bnr.Model.DOM_ELEMENTS.IMG5, .12, { scale: '0.8', repeat:1, yoyo:true, ease: Sine.easeOut }, '+=0.5')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG5, .12, {
+                scale: '0.8',
+                repeat:1,
+                yoyo:true, ease: Sine.easeOut }, '+=0.5')
               // reveal phone state 2
-              .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0, { opacity: '0'}, '-=0')
-              .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0, { opacity: '1'}, '-=0')
-              .to(Bnr.Model.DOM_ELEMENTS.IMG5, 0.5, { opacity: '0'}, '+=0.2')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0, {
+                opacity: '0'
+              }, '-=0')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0, {
+                opacity: '1'
+              }, '-=0')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG5, 0.5, {
+                opacity: '0'
+              }, '+=0.2')
               // reveal icon
-              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, { scale: '0.2' }, '+=0.15')
-              .to(Bnr.Model.DOM_ELEMENTS.IMG4, .25, { scale: '1', opacity: '1', x:'-40', y:'40', ease: Sine.easeIn }, '-=0')
-              .to(Bnr.Model.DOM_ELEMENTS.IMG4, .25, { scale: '1.2', repeat:1, yoyo:true, ease: Sine.easeInOut }, '-=0');
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
+                scale: '0.2'
+              }, '+=0.15')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, .25, {
+                scale: '1',
+                opacity: '1',
+                x:'-40',
+                y:'40',
+                ease: Sine.easeIn }, '-=0')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, .25, {
+                scale: '1.2',
+                repeat:1,
+                yoyo:true,
+                ease: Sine.easeInOut
+              }, '-=0');
             }
           },
           Controller: {
