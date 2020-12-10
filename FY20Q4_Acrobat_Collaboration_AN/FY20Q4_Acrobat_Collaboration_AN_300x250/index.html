@@ -137,11 +137,16 @@
             },
             DOM_ELEMENTS: {
               NUM_OF_FRAMES: 1,
-              NUM_OF_IMGS: 5
+              NUM_OF_IMGS: 4
             },
             BANNER_TL: "",
             INITIAL_IMGS_TO_LOAD: ["./images/F0.png"],
-            ADDTNL_IMGS_TO_LOAD: ["./images/F1_copy-cta-logo.svg", "./images/F1_tablet.png", "./images/F1_icon.png", "./images/F1_popup.png"],
+            ADDTNL_IMGS_TO_LOAD: [
+              "./images/F1_copy-cta-logo.svg",
+              "./images/F1_tablet.png",
+              "./images/F1_icon.png",
+              "./images/F1_popup.png"
+            ],
             Status: {
               numOfImgsLoaded: 0,
               initialLoadComplete: false
@@ -204,13 +209,12 @@
             init: function() {
               var i = 1;
               Bnr.Model.DOM_ELEMENTS.BANNER_CONTENT = document.querySelector(".banner-content");
-              while(i < Bnr.Model.DOM_ELEMENTS.NUM_OF_FRAMES) {
-                Bnr.Model.DOM_ELEMENTS["FRAME" + i] = document.querySelector(".image-" + i);
+              while(i <= Bnr.Model.DOM_ELEMENTS.NUM_OF_FRAMES) {
+                Bnr.Model.DOM_ELEMENTS["FRAME" + i] = document.querySelector(".frame-" + i);
                 i += 1;
               }
-              Bnr.Model.DOM_ELEMENTS.FRAME1 = document.querySelector(".js-frame-1");
               i = 1;
-              while(i < Bnr.Model.DOM_ELEMENTS.NUM_OF_IMGS) {
+              while(i <= Bnr.Model.DOM_ELEMENTS.NUM_OF_IMGS) {
                 Bnr.Model.DOM_ELEMENTS["IMG" + i] = document.querySelector(".image-" + i);
                 i += 1;
               }
@@ -229,7 +233,7 @@
 			<a class="exit" href="javascript:void(window.open(window.clickTag))"></a>
 			<div class="banner-content">
         <img src="./images/F0.png" alt="">
-				<div class="frame frame-1 js-frame-1">
+				<div class="frame frame-1">
           <img src="./images/F1_copy-cta-logo.svg" class="frame__img image-1" alt="">
           <img src="./images/F1_tablet.png" class="frame__img image-2" alt="">
           <img src="./images/F1_icon.png" class="frame__img image-3" alt="">
