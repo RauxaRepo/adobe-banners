@@ -13,158 +13,157 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
   <style type="text/css">
     body {
-      padding: 0;
-      margin: 0;
-    }
+	padding: 0;
+	margin: 0;
+}
 
-    * {
-      padding: 0;
-    }
+* {
+	padding: 0;
+}
 
-    .container {
-      margin: 0 auto;
-      position: relative;
-      overflow: hidden;
-    }
+.container {
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+}
 
-    .banner-content {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      display: none;
-      z-index: 1;
-    }
+.banner-content {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	display: none;
+	z-index: 1;
+}
 
-    .banner-content.banner-content--active {
-      opacity: 1;
-      display: block;
-    }
+.banner-content.banner-content--active {
+	opacity: 1;
+	display: block;
+}
 
-    .b-300x250 {
-      width: 300px;
-      height: 250px;
-      padding: 0;
-    }
-
-    /*CTA BTN*/
-    .btn-container {
-      width: 300px;
-      height: 250px;
-      background-color: transparent;
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      z-index: 100;
-      cursor: pointer;
-    }
-
-    img {
-      width: 300px;
-      height: 250px;
-    }
-
-    .cta-btn {
-      background-color: #fff;
-      opacity: 1;
-      width: 130px;
-      height: 35px;
-      border-radius: 6px;
-      top: 192px;
-      left: 85px;
-      position: absolute;
-      z-index: 0;
-    }
-
-    .cta-btn.hovered {
-      transform: scale(1.05);
-    }
+.b-300x250 {
+	width: 300px;
+	height: 250px;
+	padding: 0;
+}
 
 
-    .banner-border {
-      position: absolute;
-      width: 298px;
-      height: 248px;
-      border: 1px solid #D5D5D5;
-      pointer-events: none;
-      z-index: 6;
-      top: 0px;
-      left: 0px;
-    }
+/*CTA BTN*/
+.btn-container {
+	width: 300px;
+	height: 250px;
+	background-color: transparent;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	z-index: 100;
+	cursor: pointer;
+}
 
-    .exit {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 5;
-      top: 0;
-      left: 0;
-      cursor: pointer;
-    }
+img {
+	width: 300px;
+	height: 250px;
+}
 
+.cta-btn {
+	background-color: #fff;
+	opacity: 1;
+	width: 130px;
+	height: 35px;
+	border-radius: 6px;
+	top: 192px;
+	left: 85px;
+	position: absolute;
+	z-index: 0;
+}
 
-    .frame {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
+.cta-btn.hovered {
+	transform: scale(1.05);
+}
 
+.banner-border {
+	position: absolute;
+	width: 298px;
+	height: 248px;
+	border: 1px solid #D5D5D5;
+	pointer-events: none;
+	z-index: 6;
+	top: 0px;
+	left: 0px;
+}
 
-    .frame--1 {
-      z-index: 1;
-      opacity: 0;
-    }
+.exit {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 5;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+}
 
-    .frame--1 .frame__slide {
-      z-index: 2;
-    }
+.frame {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
 
-    .frame__background, .frame__slide {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 0;
-    }
+.frame--1 {
+	z-index: 1;
+	opacity: 0;
+}
 
-    .js-element-1 {
-      left: 19px;
-      top: 20px;
-      width: 177px;
-      height: 210px;
-      opacity: 1;
-    }
+.frame--1 .frame__slide {
+	z-index: 2;
+}
 
-    .js-element-2 {
-      left: 138px;
-      top: 112px;
-      width: 124px;
-      height: 151px;
-    }
+.frame__background,
+.frame__slide {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 0;
+}
 
-    .js-element-3 {
-      left: 139px;
-      top: 137px;
-      width: 30px;
-      height: 30px;
-      opacity: 0;
-    }
+.js-element-1 {
+	left: 19px;
+	top: 20px;
+	width: 177px;
+	height: 210px;
+	opacity: 1;
+}
 
-    .js-element-4 {
-      left: 214px;
-      top: 186px;
-      width: 65px;
-      height: 38px;
-      opacity: 0;
-    }
+.js-element-2 {
+	left: 138px;
+	top: 112px;
+	width: 124px;
+	height: 151px;
+}
+
+.js-element-3 {
+	left: 139px;
+	top: 137px;
+	width: 30px;
+	height: 30px;
+	opacity: 0;
+}
+
+.js-element-4 {
+	left: 214px;
+	top: 186px;
+	width: 65px;
+	height: 38px;
+	opacity: 0;
+}
   </style>
   
   <script type="text/javascript" charset="utf-8">
@@ -244,7 +243,6 @@
           init: function () {
             var i = 1;
             Bnr.Model.DOM_ELEMENTS.BANNER_CONTENT = document.querySelector(".banner-content");
-            Bnr.Model.DOM_ELEMENTS.EXIT = document.querySelector(".exit");
             while (i < Bnr.Model.DOM_ELEMENTS.NUM_OF_FRAMES) {
               Bnr.Model.DOM_ELEMENTS["FRAME" + i] = document.querySelector(".js-element-" + i);
               i += 1;
