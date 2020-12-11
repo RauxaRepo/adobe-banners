@@ -316,6 +316,8 @@
               if(Bnr.Model.Status.numOfImgsLoaded === Bnr.Model.INITIAL_IMGS_TO_LOAD.length && Bnr.Model.Status.initialLoadComplete === false) {
                 Bnr.Model.Status.initialLoadComplete = true;
                 Bnr.Model.Status.numOfImgsLoaded = 0;
+                Bnr.Model.ADDTNL_IMGS_TO_LOAD[0] = Bnr.Model.ADDTNL_IMGS_TO_LOAD[0].split('?')[0] + '?' + new Date().getTime();
+                console.log( Bnr.Model.ADDTNL_IMGS_TO_LOAD[0]);
                 Bnr.Controller.preload(Bnr.Model.ADDTNL_IMGS_TO_LOAD);
               } else if(Bnr.Model.Status.numOfImgsLoaded === Bnr.Model.ADDTNL_IMGS_TO_LOAD.length) {
                 Bnr.Controller.init();
