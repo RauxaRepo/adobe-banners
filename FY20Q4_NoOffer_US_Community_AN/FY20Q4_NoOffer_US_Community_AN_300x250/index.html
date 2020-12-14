@@ -86,8 +86,10 @@
       }
 
       .image-1 {
-        transform: none;
-        -webkit-transform:none;
+        left: 0px;
+        top: 0px;
+        width: 300px;
+        height: 8000px;
       }
 
       .image-2 {
@@ -187,7 +189,7 @@
             },
             INITIAL_IMGS_TO_LOAD: ["./images/F0.jpg"],
             ADDTNL_IMGS_TO_LOAD: [
-              "./images/F1.gif",
+              "./images/F1.jpg",
               "./images/F1_bg_mask.png",
               "./images/F1_dotted_box.svg",
               "./images/F1_text.svg",
@@ -212,62 +214,66 @@
               });
               TL
               // initialize origin
-              .set(Bnr.Model.DOM_ELEMENTS.IMG2, {
+              .set(Bnr.Model.DOM_ELEMENTS.IMG3, {
               	transformOrigin: "0% 0%"
               })
               // reveal frame 0
               .to(Bnr.Model.DOM_ELEMENTS.FRAME1, 0, {
               	opacity: '1'
-              }, '+=1').to(Bnr.Model.DOM_ELEMENTS.IMG1, .5, {
+              }, '+=1')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG1, .5, {
               	opacity: '1',
               	ease: Sine.easeOut
               }, '+=0')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG1, 4, {y:"-7750px",ease:SteppedEase.config(31)} )
               //reveal frame 1
               .to(Bnr.Model.DOM_ELEMENTS.FRAME2, 0, {
               	opacity: '1'
-              }, '+=0.5')
+              }, '-=2')
               // reveal bg mask
               .to(Bnr.Model.DOM_ELEMENTS.IMG2, .5, {
               	opacity: '1',
               	ease: Sine.easeOut
-              }, '+=2')
+              }, '-=2')
               // reveal dotted frame
               .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0, {
               	css: {
               		scale: 0
               	}
-              }, '-=1').to(Bnr.Model.DOM_ELEMENTS.IMG3, .5, {
+              }, '-=2')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG3, .5, {
               	css: {
               		opacity: 1,
               		scale: 1
               	},
               	ease: Sine.easeIn
-              }, '-=1').to(Bnr.Model.DOM_ELEMENTS.IMG5, 0, {
+              }, '-=2')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG5, 0, {
               	opacity: 1
-              }, '+=0.1')
+              }, '-=2')
               // reveal text
               .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.8, {
               	css: {
               		width: '300px'
               	},
               	ease: Sine.easeIn
-              }, '-=0.1').to(Bnr.Model.DOM_ELEMENTS.IMG5, 0.8, {
+              }, '-=2')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG5, 0.8, {
               	css: {
               		left: '130px'
               	},
               	ease: Sine.easeIn
-              }, '-=0.8').to(Bnr.Model.DOM_ELEMENTS.IMG5, 0, {
-              	opacity: 0
-              }, '+=0.15').to(Bnr.Model.DOM_ELEMENTS.IMG5, 0, {
-              	opacity: 1
-              }, '+=0.15').to(Bnr.Model.DOM_ELEMENTS.IMG5, 0, {
-              	opacity: 0
-              }, '+=0.15')
+              }, '-=2')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG5, 0.2, {
+                opacity: 0,
+                yoyo: true,
+                repeat: 8
+              }, '-=2')
               // reveal frame 2
               .to(Bnr.Model.DOM_ELEMENTS.FRAME3, 0, {
               	opacity: '1',
               	ease: Sine.easeOut
-              }, '+=1.5')
+              }, '+=0.25')
               // animate endframe bg
               .to(Bnr.Model.DOM_ELEMENTS.IMG6, 0, {
               	y: '0',
@@ -302,7 +308,7 @@
               	opacity: '1',
               	y: '0',
               	ease: Sine.easeOut
-              }, '-=0.75');
+              }, '-=0.75'); 
             }
           },
           Controller: {
@@ -321,8 +327,7 @@
               if(Bnr.Model.Status.numOfImgsLoaded === Bnr.Model.INITIAL_IMGS_TO_LOAD.length && Bnr.Model.Status.initialLoadComplete === false) {
                 Bnr.Model.Status.initialLoadComplete = true;
                 Bnr.Model.Status.numOfImgsLoaded = 0;
-                //Bnr.Model.ADDTNL_IMGS_TO_LOAD[0] = Bnr.Model.ADDTNL_IMGS_TO_LOAD[0].split('?')[0] + '?' + new Date().getTime();
-                console.log( Bnr.Model.ADDTNL_IMGS_TO_LOAD[0]);
+                Bnr.Model.ADDTNL_IMGS_TO_LOAD[0] = Bnr.Model.ADDTNL_IMGS_TO_LOAD[0].split('?')[0] + '?' + new Date().getTime();
                 Bnr.Controller.preload(Bnr.Model.ADDTNL_IMGS_TO_LOAD);
               } else if(Bnr.Model.Status.numOfImgsLoaded === Bnr.Model.ADDTNL_IMGS_TO_LOAD.length) {
                 Bnr.Controller.init();
@@ -365,7 +370,7 @@
           <div class="banner-content">
             <img src="./images/F0.jpg" alt="">
             <div class="frame frame-1">
-              <img src="./images/F1.gif" class="frame__img image-1" alt="">
+              <img src="./images/F1.jpg" class="frame__img image-1" alt="">
             </div>        
             <div class="frame frame-2">
               <img src="./images/F1_bg_mask.png" class="frame__img image-2" alt="">
