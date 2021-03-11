@@ -48,20 +48,6 @@
         left: 0px;
       }
      
-      .exit {
-        width: 100%;
-        height: 100%;
-        background-color: transparent;
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        z-index: 201;
-        cursor: pointer;
-      }
-
       .frame {
         position: absolute;
         width: 100%;
@@ -72,6 +58,29 @@
         right: 0;
         z-index: 101;
         opacity: 0;
+      }
+
+      .frame-1, .frame-2 {
+        z-index: 101;
+      }
+
+      .exit {
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        z-index: 300;
+        cursor: pointer;
+      }
+
+      .frame-3 {
+        z-index: 303;
+        display: none;
       }
 
       .frame__img {
@@ -111,7 +120,7 @@
 
       .image-4 img {
         left: 40px;
-        top: 105px;
+        top: 103px;
         width: 220px;
         height: 40px;
       }
@@ -274,7 +283,8 @@
               // reveal frame 2
               .to(Bnr.Model.DOM_ELEMENTS.FRAME3, 0, {
               	opacity: '1',
-              	ease: Sine.easeOut
+              	ease: Sine.easeOut,
+                onComplete: function () {Bnr.Model.DOM_ELEMENTS.FRAME3.style.display="block";}
               }, '+=0.25')
               // animate endframe bg
               .to(Bnr.Model.DOM_ELEMENTS.IMG6, 0, {
@@ -311,6 +321,14 @@
               	y: '0',
               	ease: Sine.easeOut
               }, '-=0.75'); 
+            },
+
+            ctaOver: function() {
+              Bnr.Model.DOM_ELEMENTS.IMG9.src = "./images/tag_cta_ro.svg";
+            },
+
+            ctaOut: function() {
+              Bnr.Model.DOM_ELEMENTS.IMG9.src = "./images/tag_cta.svg";
             }
           },
           Controller: {
@@ -357,6 +375,9 @@
                 Bnr.Model.DOM_ELEMENTS["IMG" + i] = document.querySelector(".image-" + i);
                 i += 1;
               }
+              // cta hover 
+              Bnr.Model.DOM_ELEMENTS.IMG9.addEventListener("mouseover", Bnr.View.ctaOver);
+              Bnr.Model.DOM_ELEMENTS.IMG9.addEventListener("mouseout", Bnr.View.ctaOut);
               // reveal banner
               Bnr.Model.DOM_ELEMENTS.BANNER_CONTENT.classList.add("banner-content--active");
               Bnr.View.init();
@@ -384,17 +405,17 @@
               </div>
               <img src="./images/F1_cursor.svg" class="frame__img image-5" alt="">
             </div>
+            <a class="exit" href="javascript:void(window.open(window.clickTag))"></a>
             <div class="frame frame-3">
               <img src="./images/tag_bg.jpg" class="frame__img image-6" alt="">
               <img src="./images/tag_headline1.svg" class="frame__img image-7" alt="">
               <img src="./images/tag_headline2.svg" class="frame__img image-8" alt="">
-              <img src="./images/tag_cta.svg" class="frame__img image-9" alt="">
+              <a href="javascript:void(window.open(window.clickTag))"><img src="./images/tag_cta.svg" class="frame__img image-9" alt=""></a>
               <img src="./images/tag_logo.svg" class="frame__img image-10" alt="">
               <img src="./images/tag_cloud.svg" class="frame__img image-11" alt="">
             </div>
           </div>
           <div class="banner-border"></div>
-          <a class="exit" href="javascript:void(window.open(window.clickTag))"></a>
         </div>
     </body>
 </html>
