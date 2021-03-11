@@ -60,10 +60,6 @@
         opacity: 0;
       }
 
-      .frame-1 {
-        z-index: 101;
-      }
-
       .exit {
         width: 100%;
         height: 100%;
@@ -76,11 +72,6 @@
         justify-content: center;
         z-index: 300;
         cursor: pointer;
-      }
-
-      .frame-2 {
-        z-index: 303;
-        display: none;
       }
 
       .frame__img {
@@ -291,8 +282,9 @@
               i += 1;
               }
               // cta hover 
-              Bnr.Model.DOM_ELEMENTS.IMG6.addEventListener("mouseover", Bnr.View.ctaOver);
-              Bnr.Model.DOM_ELEMENTS.IMG6.addEventListener("mouseout", Bnr.View.ctaOut);
+              Bnr.Model.DOM_ELEMENTS["EXT"] = document.getElementsByClassName("exit")[0];
+              Bnr.Model.DOM_ELEMENTS.EXT.addEventListener("mouseover", Bnr.View.ctaOver);
+              Bnr.Model.DOM_ELEMENTS.EXT.addEventListener("mouseout", Bnr.View.ctaOut);
               // reveal banner
               Bnr.Model.DOM_ELEMENTS.BANNER_CONTENT.classList.add("banner-content--active");
               Bnr.View.init();
@@ -309,18 +301,18 @@
             <img src="./images/F0.gif" alt="">
             <div class="frame frame-1">
               <img src="./images/F1.gif" class="frame__img image-1" alt="">
-            </div>     
-            <a class="exit" href="javascript:void(window.open(window.clickTag))"></a>   
+            </div>        
             <div class="frame frame-2">
               <img src="./images/tag_bg.jpg" class="frame__img image-2" alt="">
               <img src="./images/tag_eyebrow.svg" class="frame__img image-3" alt="">
               <img src="./images/tag_headline1.svg" class="frame__img image-4" alt="">
               <img src="./images/tag_headline2.svg" class="frame__img image-5" alt="">
-              <a href="javascript:void(window.open(window.clickTag))"><img src="./images/tag_cta.svg" class="frame__img image-6" alt=""></a>
+              <img src="./images/tag_cta.svg" class="frame__img image-6" alt="">
               <img src="./images/tag_logo.svg" class="frame__img image-7" alt="">
               <img src="./images/tag_cloud.svg" class="frame__img image-8" alt="">
             </div>
           </div>
+          <a class="exit" href="javascript:void(window.open(window.clickTag))"></a>
           <div class="banner-border"></div> 
         </div>
     </body>
