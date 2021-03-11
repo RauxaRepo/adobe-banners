@@ -60,10 +60,6 @@
         opacity: 0;
       }
 
-      .frame-1 {
-        z-index: 101;
-      }
-
       .exit {
         width: 100%;
         height: 100%;
@@ -74,13 +70,8 @@
         display: flex;
         align-items: flex-end;
         justify-content: center;
-        z-index: 300;
+        z-index: 900;
         cursor: pointer;
-      }
-
-      .frame-2 {
-        z-index: 303;
-        display: none;
       }
 
       .frame__img {
@@ -220,50 +211,50 @@
           },
           View: {
             init: function() {
+              TweenMax.to(Bnr.Model.DOM_ELEMENTS.IMG2, 0, {
+              	css: {
+              		scale: 0,
+                  transformOrigin: "0% 0%"
+              	}
+              })
               var TL = new TimelineMax({
                 paused: false
               });
               TL
               // initialize origin
-              .set(Bnr.Model.DOM_ELEMENTS.IMG2, {
-              	transformOrigin: "0% 0%"
-              })
+              
               // reveal frame 1
               .to(Bnr.Model.DOM_ELEMENTS.FRAME1, 0, {
               	opacity: '1'
-              }, '+=0')
+              })
               // reveal bg mask
-              .to(Bnr.Model.DOM_ELEMENTS.IMG1, .5, {
+              .to(Bnr.Model.DOM_ELEMENTS.IMG1, 0.5, {
               	opacity: '1',
               	ease: Sine.easeOut
               }, '+=1.5')
               // reveal dotted frame
-              .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0, {
-              	css: {
-              		scale: 0
-              	}
-              }, '-=1.5')
               .to(Bnr.Model.DOM_ELEMENTS.IMG2, .5, {
               	css: {
               		opacity: 1,
               		scale: 1
               	},
               	ease: Sine.easeIn
-              }, '+=0').to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
+              }, '-=1')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
               	opacity: 1
-              }, '+=0.1')
+              }, '-=0.5')
               // reveal text
               .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0.8, {
               	css: {
               		width: '300px'
               	},
               	ease: Sine.easeIn
-              }, '-=0.1').to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.8, {
+              }, '-=1').to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.8, {
               	css: {
               		left: '130px'
               	},
               	ease: Sine.easeIn
-              }, '-=0.8').to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
+              }, '-=1').to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
               	opacity: 0
               }, '+=0.15').to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
               	opacity: 1
@@ -273,8 +264,7 @@
               // reveal frame 2
               .to(Bnr.Model.DOM_ELEMENTS.FRAME2, 0, {
               	opacity: '1',
-              	ease: Sine.easeOut,
-                onComplete: function () {Bnr.Model.DOM_ELEMENTS.FRAME2.style.display="block";}
+              	ease: Sine.easeOut
               }, '+=1.5')
               // animate endframe bg
               .to(Bnr.Model.DOM_ELEMENTS.IMG5, 0, {
@@ -320,10 +310,12 @@
             },
 
             ctaOver: function() {
+              console.log("over");
               Bnr.Model.DOM_ELEMENTS.IMG9.src = "./images/tag_cta_ro.svg";
             },
 
             ctaOut: function() {
+              console.log("out");
               Bnr.Model.DOM_ELEMENTS.IMG9.src = "./images/tag_cta.svg";
             }
           },
@@ -371,8 +363,9 @@
               i += 1;
               }
               // cta hover 
-              Bnr.Model.DOM_ELEMENTS.IMG9.addEventListener("mouseover", Bnr.View.ctaOver);
-              Bnr.Model.DOM_ELEMENTS.IMG9.addEventListener("mouseout", Bnr.View.ctaOut);
+              Bnr.Model.DOM_ELEMENTS["EXT"] = document.getElementsByClassName("exit")[0];
+              Bnr.Model.DOM_ELEMENTS.EXT.addEventListener("mouseover", Bnr.View.ctaOver);
+              Bnr.Model.DOM_ELEMENTS.EXT.addEventListener("mouseout", Bnr.View.ctaOut);
               // reveal banner
               Bnr.Model.DOM_ELEMENTS.BANNER_CONTENT.classList.add("banner-content--active");
               Bnr.View.init();
@@ -397,7 +390,6 @@
               </div>
               <img src="./images/F1_cursor.svg" class="frame__img image-4" alt="">
             </div>
-            <a class="exit" href="javascript:void(window.open(window.clickTag))"></a>
             <div class="frame frame-2">
               <img src="./images/tag_bg.jpg" class="frame__img image-5" alt="">
               <img src="./images/tag_headline1.svg" class="frame__img image-6" alt="">
@@ -408,6 +400,7 @@
               <img src="./images/tag_cloud.svg" class="frame__img image-11" alt="">
             </div>
           </div>
+          <a class="exit" href="javascript:void(window.open(window.clickTag))"></a>
           <div class="banner-border"></div>
         </div>
     </body>
