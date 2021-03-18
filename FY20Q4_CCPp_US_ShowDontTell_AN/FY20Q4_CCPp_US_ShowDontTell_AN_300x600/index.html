@@ -91,7 +91,7 @@
 
       .image-2 {
         left: 24px;
-        top: 90px;
+        top: 267px;
         width: 260px;
         height: 66px;
         opacity: 0;
@@ -104,14 +104,14 @@
 
       .image-3 img {
         left: 40px;
-        top: 102px;
+        top: 280px;
         width: 220px;
         height: 40px;
       }
 
       .image-4 {
         left: -94px;
-        top: 109px;
+        top: 280px;
         width: 267px;
         height: 30px;
         opacity: 0;
@@ -239,17 +239,17 @@
               		scale: 1
               	},
               	ease: Sine.easeIn
-              }, '-=1')
+              }, '-=0.75')
               .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
               	opacity: 1
               }, '-=0.5')
               // reveal text
-              .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0.8, {
+              .to(Bnr.Model.DOM_ELEMENTS.IMG3, 1, {
               	css: {
               		width: '300px'
               	},
               	ease: Sine.easeIn
-              }, '-=1').to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.8, {
+              }, '-=1').to(Bnr.Model.DOM_ELEMENTS.IMG4, 1, {
               	css: {
               		left: '130px'
               	},
@@ -260,7 +260,7 @@
               	opacity: 1
               }, '+=0.15').to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
               	opacity: 0
-              }, '+=0.15')
+              }, '+=0.15'); /*
               // reveal frame 2
               .to(Bnr.Model.DOM_ELEMENTS.FRAME2, 0, {
               	opacity: '1',
@@ -306,7 +306,7 @@
               	opacity: '1',
               	y: '0',
               	ease: Sine.easeOut
-              }, '-=0.75');
+              }, '-=0.75');*/
             },
 
             ctaOver: function() {
