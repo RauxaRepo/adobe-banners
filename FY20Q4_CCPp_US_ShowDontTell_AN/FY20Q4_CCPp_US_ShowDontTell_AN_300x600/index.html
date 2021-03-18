@@ -191,7 +191,7 @@
             },
             INITIAL_IMGS_TO_LOAD: ["./images/F0.jpg"],
             ADDTNL_IMGS_TO_LOAD: [
-              "./images/F1_bg_mask.png",
+              "./images/F1_bg_mask.jpg",
               "./images/F1_dotted_box.svg",
               "./images/F1_text.svg",
               "./images/F1_cursor.svg",
@@ -229,9 +229,9 @@
               })
               // reveal bg mask
               .to(Bnr.Model.DOM_ELEMENTS.IMG1, 0.5, {
-              	opacity: '1',
+              	opacity: '0.25',
               	ease: Sine.easeOut
-              }, '+=1.5')
+              }, '+=0.5')
               // reveal dotted frame
               .to(Bnr.Model.DOM_ELEMENTS.IMG2, .5, {
               	css: {
@@ -239,17 +239,17 @@
               		scale: 1
               	},
               	ease: Sine.easeIn
-              }, '-=0.75')
+              }, '-=1')
               .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
               	opacity: 1
-              }, '-=0.5')
+              }, '-=0.75')
               // reveal text
-              .to(Bnr.Model.DOM_ELEMENTS.IMG3, 1, {
+              .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0.8, {
               	css: {
               		width: '300px'
               	},
               	ease: Sine.easeIn
-              }, '-=1').to(Bnr.Model.DOM_ELEMENTS.IMG4, 1, {
+              }, '-=1').to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.8, {
               	css: {
               		left: '130px'
               	},
@@ -260,7 +260,7 @@
               	opacity: 1
               }, '+=0.15').to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
               	opacity: 0
-              }, '+=0.15'); /*
+              }, '+=0.15')
               // reveal frame 2
               .to(Bnr.Model.DOM_ELEMENTS.FRAME2, 0, {
               	opacity: '1',
@@ -306,7 +306,7 @@
               	opacity: '1',
               	y: '0',
               	ease: Sine.easeOut
-              }, '-=0.75');*/
+              }, '-=0.75');
             },
 
             ctaOver: function() {
@@ -381,7 +381,7 @@
           <div class="banner-content">
             <img src="./images/F0.jpg" alt="">
             <div class="frame frame-1">
-              <img src="./images/F1_bg_mask.png" class="frame__img image-1" alt="">
+              <img src="./images/F1_bg_mask.jpg" class="frame__img image-1" alt="">
               <div class="frame__img image-2">
                 <img src="./images/F1_dotted_box.svg" style="width:100%; height:100%;" alt="">
               </div>
