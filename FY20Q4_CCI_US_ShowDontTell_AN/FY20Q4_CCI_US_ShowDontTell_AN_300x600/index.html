@@ -210,51 +210,50 @@
           },
           View: {
             init: function() {
+              TweenMax.to(Bnr.Model.DOM_ELEMENTS.IMG2, 0, {
+              	css: {
+              		scale: 0,
+                  transformOrigin: "0% 0%"
+              	}
+              })
               var TL = new TimelineMax({
                 paused: false
               });
               TL
               // initialize origin
-              .set(Bnr.Model.DOM_ELEMENTS.IMG2, {
-              	transformOrigin: "0% 0%"
-              })
-              // reveal frame 0
+              
+              // reveal frame 1
               .to(Bnr.Model.DOM_ELEMENTS.FRAME1, 0, {
               	opacity: '1'
-              }, '+=1').to(Bnr.Model.DOM_ELEMENTS.IMG1, .5, {
+              })
+              // reveal bg mask
+              .to(Bnr.Model.DOM_ELEMENTS.IMG1, 0.5, {
               	opacity: '1',
               	ease: Sine.easeOut
-              }, '+=0')
-              //reveal frame 1
-              .to(Bnr.Model.DOM_ELEMENTS.FRAME2, 0, {
-              	opacity: '1'
-              }, '+=0')
+              }, '+=0.5')
               // reveal dotted frame
-              .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0, {
-              	css: {
-              		scale: 0
-              	}
-              }, '+=0').to(Bnr.Model.DOM_ELEMENTS.IMG2, .5, {
+              .to(Bnr.Model.DOM_ELEMENTS.IMG2, .5, {
               	css: {
               		opacity: 1,
               		scale: 1
               	},
               	ease: Sine.easeIn
-              }, '+=0').to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
+              }, '-=1')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
               	opacity: 1
-              }, '+=0.1')
+              }, '-=0.75')
               // reveal text
               .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0.8, {
               	css: {
               		width: '300px'
               	},
               	ease: Sine.easeIn
-              }, '-=0.1').to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.8, {
+              }, '-=1').to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.8, {
               	css: {
               		left: '130px'
               	},
               	ease: Sine.easeIn
-              }, '-=0.8').to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
+              }, '-=1').to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
               	opacity: 0
               }, '+=0.15').to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
               	opacity: 1
@@ -262,10 +261,9 @@
               	opacity: 0
               }, '+=0.15')
               // reveal frame 2
-              .to(Bnr.Model.DOM_ELEMENTS.FRAME3, 0, {
+              .to(Bnr.Model.DOM_ELEMENTS.FRAME2, 0, {
               	opacity: '1',
-              	ease: Sine.easeOut,
-                onComplete: function () {Bnr.Model.DOM_ELEMENTS.FRAME3.style.display="block";}
+              	ease: Sine.easeOut
               }, '+=1.5')
               // animate endframe bg
               .to(Bnr.Model.DOM_ELEMENTS.IMG5, 0, {
@@ -377,21 +375,19 @@
   <head>
     <body>
         <div id="container" class="container" style="background-color: #fff;">
-          <div class="banner-content">
-            <img src="./images/F0.jpg" alt="">
-            <div class="frame frame-1">
-              <img src="./images/F1.jpg" class="frame__img image-1" alt="">
-            </div>        
-            <div class="frame frame-2">
-              <div class="frame__img image-2">
-                <img src="./images/F1_dotted_box.svg" style="width:100%; height:100%;" alt="">
-              </div>
-              <div class="frame__img image-3">
-                <img src="./images/F1_text.svg" class="frame__img" alt="">
-              </div>
-              <img src="./images/F1_cursor.svg" class="frame__img image-4" alt="">
+          <div class="banner-content"></div>
+          <img src="./images/F0.jpg" alt="">
+          <div class="frame frame-1">
+            <img src="./images/F1.jpg" class="frame__img image-1" alt="">
+            <div class="frame__img image-2">
+              <img src="./images/F1_dotted_box.svg" style="width:100%; height:100%;" alt="">
             </div>
-            <div class="frame frame-3">
+            <div class="frame__img image-3">
+            <img src="./images/F1_text.svg" class="frame__img" alt="">
+            </div>
+            <img src="./images/F1_cursor.svg" class="frame__img image-4" alt="">
+          </div>
+          <div class="frame frame-2">
               <img src="./images/tag_bg.jpg" class="frame__img image-5" alt="">
               <img src="./images/tag_headline1.svg" class="frame__img image-6" alt="">
               <img src="./images/tag_headline2.svg" class="frame__img image-7" alt="">
