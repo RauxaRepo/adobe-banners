@@ -102,11 +102,25 @@
         overflow: hidden;
       }
 
-      .image-3 img {
-        left: 40px;
-        top: 280px;
-        width: 220px;
-        height: 40px;
+      .image-3 img.frame__img:nth-child(1) {
+        top: 256px;
+        left: 0;
+        width: 157px;
+        height: 26px;
+      }
+
+      .image-3 img.frame__img:nth-child(2) {
+        top: 291px;
+        left: 0;
+        width: 154px;
+        height: 20px;
+      }
+
+      .image-3 img.frame__img:nth-child(3) {
+        top: 317px;
+        left: 2px;
+        width: 157px;
+        height: 20px;
       }
 
       .image-4 {
@@ -193,7 +207,9 @@
             ADDTNL_IMGS_TO_LOAD: [
               "./images/F1_bg_mask.png",
               "./images/F1_dotted_box.svg",
-              "./images/F1_text.svg",
+              "./images/F1_text1.svg",
+              "./images/F1_text2.svg",
+              "./images/F1_text3.svg",
               "./images/F1_cursor.svg",
               "./images/tag_bg.jpg",
               "./images/tag_headline1.svg",
@@ -386,7 +402,9 @@
                 <img src="./images/F1_dotted_box.svg" style="width:100%; height:100%;" alt="">
               </div>
               <div class="frame__img image-3">
-              <img src="./images/F1_text.svg" class="frame__img" alt="">
+                <img src="./images/F1_text1.svg" class="frame__img" alt="">
+                <img src="./images/F1_text2.svg" class="frame__img" alt="">
+                <img src="./images/F1_text3.svg" class="frame__img" alt="">
               </div>
               <img src="./images/F1_cursor.svg" class="frame__img image-4" alt="">
             </div>
