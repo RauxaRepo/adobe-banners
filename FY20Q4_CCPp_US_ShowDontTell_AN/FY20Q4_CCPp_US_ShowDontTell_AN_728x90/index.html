@@ -126,7 +126,7 @@
 
       .image-6 {
         left: 100px;
-        top: 37px;
+        top: 27px;
         width: 120px;
         height: 15px;
         opacity: 0;
@@ -135,7 +135,7 @@
 
       .image-7 {
         left: 225px;
-        top: 37px;
+        top: 27px;
         width: 161px;
         height: 15px;
         opacity: 0;
@@ -143,6 +143,15 @@
       }
 
       .image-8 {
+        left: 100px;
+        top: 50px;
+        width: 152px;
+        height: 18px;
+        opacity: 0;
+        transform: translateY(+80px);
+      }
+
+      .image-9 {
         left: 406px;
         top: 27px;
         width: 102px;
@@ -153,7 +162,7 @@
         cursor: pointer;
       }
 
-      .image-9 {
+      .image-10 {
         left: 20px;
         top: -11px;
         width: 67px;
@@ -162,7 +171,7 @@
         transform: translateY(+40px);
       }
 
-      .image-10 {
+      .image-11 {
         left: 569px;
         top: -2px;
         width: 140px;
@@ -261,7 +270,7 @@
                 ease: Sine.easeIn
               }, '+=0')
               // reveal logo
-              .to(Bnr.Model.DOM_ELEMENTS.IMG9, .5, {
+              .to(Bnr.Model.DOM_ELEMENTS.IMG10, .5, {
                 opacity: '1',
                 y: '0',
                 ease: Sine.easeOut
@@ -278,14 +287,20 @@
                 y: '0',
                 ease: Sine.easeOut
               }, '-=0.65')
+              // reveal headlin3
+              .to(Bnr.Model.DOM_ELEMENTS.IMG8, .8, {
+                opacity: '1',
+                y: '0',
+                ease: Sine.easeOut
+              }, '-=0.65')
               // reveal cta
-              .to(Bnr.Model.DOM_ELEMENTS.IMG8, .5, {
+              .to(Bnr.Model.DOM_ELEMENTS.IMG9, .5, {
                 opacity: '1',
                 y: '0',
                 ease: Sine.easeOut
               }, '-=0.5')
               // reveal cloud
-              .to(Bnr.Model.DOM_ELEMENTS.IMG10, .5, {
+              .to(Bnr.Model.DOM_ELEMENTS.IMG11, .5, {
                 opacity: '1',
                 y: '0',
                 ease: Sine.easeOut
@@ -294,12 +309,12 @@
 
             ctaOver: function() {
               console.log("over");
-              Bnr.Model.DOM_ELEMENTS.IMG8.src = "./images/tag_cta_ro.svg";
+              Bnr.Model.DOM_ELEMENTS.IMG9.src = "./images/tag_cta_ro.svg";
             },
 
             ctaOut: function() {
               console.log("out");
-              Bnr.Model.DOM_ELEMENTS.IMG8.src = "./images/tag_cta.svg";
+              Bnr.Model.DOM_ELEMENTS.IMG9.src = "./images/tag_cta.svg";
             }
           },
           Controller: {
@@ -377,9 +392,10 @@
             <img src="./images/tag_bg.jpg" class="frame__img image-5" alt="">
             <img src="./images/tag_headline1.svg" class="frame__img image-6" alt="">
             <img src="./images/tag_headline2.svg" class="frame__img image-7" alt="">
-            <img src="./images/tag_cta.svg" class="frame__img image-8" alt="">
-            <img src="./images/tag_logo.svg" class="frame__img image-9" alt="">
-            <img src="./images/tag_cloud.svg" class="frame__img image-10" alt="">
+            <img src="./images/tag_headline3.svg" class="frame__img image-8" alt="">
+            <img src="./images/tag_cta.svg" class="frame__img image-9" alt="">
+            <img src="./images/tag_logo.svg" class="frame__img image-10" alt="">
+            <img src="./images/tag_cloud.svg" class="frame__img image-11" alt="">
           </div>
         </div>
         <a class="exit" href="javascript:void(window.open(window.clickTag))"></a>
