@@ -124,7 +124,7 @@
 
       .image-4 {
         left: -94px;
-        top: 280px;
+        top: 254px;
         width: 267px;
         height: 30px;
         opacity: 0;
@@ -253,12 +253,15 @@
 			  		width: '160px'
 			  	},
 			  	ease: Sine.easeIn
-			  }, '-=0.1').to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.8, {
+			  }, '-=0.5')
+        .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.4, {
 			  	css: {
-			  		left: '130px'
+			  		left: '-5px',
+            top: '314px',
 			  	},
-			  	ease: Sine.easeIn
-			  }, '-=0.8').to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
+			  	ease:SteppedEase.config(3)
+			  }, '-=0.4')
+        .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
 			  	opacity: 0
 			  }, '+=0.15').to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
 			  	opacity: 1
