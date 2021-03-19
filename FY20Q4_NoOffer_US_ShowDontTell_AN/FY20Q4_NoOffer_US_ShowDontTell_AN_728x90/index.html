@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="ad.size" content="width=728,height=90">
+    <script type="text/javascript">
+      var clickTag = "https://www.adobe.com/creativecloud/renew/resubscribe-promo-sa.html";
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+    <style type="text/css">
+      * {
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+      }
+      
+      .container {
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .banner-content {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        display: none;
+        z-index: 100;
+      }
+
+      .banner-content.banner-content--active {
+        opacity: 1;
+        display: block;
+      }
+
+      .banner-border {
+        position: absolute;
+        border: 1px solid #D5D5D5;
+        pointer-events: none;
+        z-index: 200;
+        top: 0px;
+        left: 0px;
+      }
+
+      .frame {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 101;
+        opacity: 0;
+      }
+      
+      .exit {
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        z-index: 300;
+        cursor: pointer;
+      }
+
+      .frame__img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 102;
+      }
+
+      .image-1 {
+        opacity: 0;
+      }
+
+      .image-2 {
+        left: 238px;
+        top: 15px;
+        width: 260px;
+        height: 66px;
+        opacity: 0;
+      }
+     
+      .image-3 {
+        width: 0;
+        overflow: hidden;
+      }
+
+      .image-3 img {
+        left: 254px;
+        top: 28px;
+        width: 220px;
+        height: 40px;
+      }
+
+      .image-4 {
+        left: 120px;
+        top: 34px;
+        width: 267px;
+        height: 30px;
+        opacity: 0;
+      }
+
+      .image-5 {
+        left: 0;
+        top: 0;
+        width: 728px;
+        height: 90px;
+        transform: translateY(+250px);
+      }
+
+      .image-6 {
+        left: 126px;
+        top: 37px;
+        width: 95px;
+        height: 15px;
+        opacity: 0;
+        transform: translateY(+80px);
+      }
+
+      .image-7 {
+        left: 225px;
+        top: 37px;
+        width: 151px;
+        height: 15px;
+        opacity: 0;
+        transform: translateY(+90px);
+      }
+
+      .image-8 {
+        left: 406px;
+        top: 27px;
+        width: 102px;
+        height: 36px;
+        opacity: 0;
+        transform: translateY(+80px);
+        z-index: 202;
+        cursor: pointer;
+      }
+
+      .image-9 {
+        left: 20px;
+        top: -11px;
+        width: 67px;
+        height: 82px;
+        opacity: 0;
+        transform: translateY(+40px);
+      }
+
+      .image-10 {
+        left: 569px;
+        top: -2px;
+        width: 140px;
+        height: 106px;
+        opacity: 0;
+        transform: translateY(+140px);
+      }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+      var Bnr = window.Bnr || {};
+      window.onload = function() {
+        "use strict";
+        Bnr = {
+          Model: {
+            BANNER_CONFIG: {
+              width: 728,
+              height: 90
+            },
+            INITIAL_IMGS_TO_LOAD: ["./images/F0.jpg"],
+            ADDTNL_IMGS_TO_LOAD: [
+              "./images/F1_bg_mask.png",
+              "./images/F1_dotted_box.svg",
+              "./images/F1_text.svg",
+              "./images/F1_cursor.svg",
+              "./images/tag_bg.jpg",
+              "./images/tag_headline1.svg",
+              "./images/tag_headline2.svg",
+              "./images/tag_cta.svg",
+              "./images/tag_logo.svg",
+              "./images/tag_cloud.svg"
+            ],
+            DOM_ELEMENTS: {},
+            Status: {
+              numOfImgsLoaded: 0,
+              initialLoadComplete: false
+            }
+          },
+          View: {
+            init: function() {
+              var TL = new TimelineMax({
+                paused: false
+              });
+              TL
+			  // initialize origin
+			  .set(Bnr.Model.DOM_ELEMENTS.IMG2, {
+			  	transformOrigin: "0% 0%"
+			  })
+			  //reveal frame 1
+			  .to(Bnr.Model.DOM_ELEMENTS.FRAME1, 0, {
+			  	opacity: '1'
+			  }, '-=0.5')
+			  // reveal bg mask
+			  .to(Bnr.Model.DOM_ELEMENTS.IMG1, .5, {
+			  	opacity: '1',
+			  	ease: Sine.easeOut
+			  }, '+=1')
+			  // reveal dotted frame
+			  .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0, {
+			  	css: {
+			  		scale: 0
+			  	}
+			  }, '-=0.5').to(Bnr.Model.DOM_ELEMENTS.IMG2, .5, {
+			  	css: {
+			  		opacity: 1,
+			  		scale: 1
+			  	},
+			  	ease: Sine.easeIn
+			  }, '-=0.2').to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
+			  	opacity: 1
+			  }, '+=0.1')
+			  // reveal text
+			  .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0.8, {
+			  	css: {
+			  		width: '728px'
+			  	},
+			  	ease: Sine.easeIn
+			  }, '-=0.6').to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.8, {
+			  	css: {
+			  		left: '344px'
+			  	},
+			  	ease: Sine.easeIn
+			  }, '-=0.8').to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
+			  	opacity: 0
+			  }, '+=0.15').to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
+			  	opacity: 1
+			  }, '+=0.15').to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
+			  	opacity: 0
+			  }, '+=0.15')
+			  // reveal frame 2
+			  .to(Bnr.Model.DOM_ELEMENTS.FRAME2, 0, {
+			  	opacity: '1',
+			  	ease: Sine.easeOut,
+                onComplete: function () {Bnr.Model.DOM_ELEMENTS.FRAME2.style.display="block";}
+			  }, '+=1.5')
+			  // animate endframe bg
+			  .to(Bnr.Model.DOM_ELEMENTS.IMG5, 0, {
+			  	y: '0',
+			  	ease: Sine.easeIn
+			  }, '+=0')
+			  // reveal logo
+			  .to(Bnr.Model.DOM_ELEMENTS.IMG9, .5, {
+			  	opacity: '1',
+			  	y: '0',
+			  	ease: Sine.easeOut
+			  }, '-=0.0')
+			  // reveal headline1
+			  .to(Bnr.Model.DOM_ELEMENTS.IMG6, .65, {
+			  	opacity: '1',
+			  	y: '0',
+			  	ease: Sine.easeOut
+			  }, '-=0.5')
+			  // reveal headline2
+			  .to(Bnr.Model.DOM_ELEMENTS.IMG7, .8, {
+			  	opacity: '1',
+			  	y: '0',
+			  	ease: Sine.easeOut
+			  }, '-=0.65')
+			  // reveal cta
+			  .to(Bnr.Model.DOM_ELEMENTS.IMG8, .5, {
+			  	opacity: '1',
+			  	y: '0',
+			  	ease: Sine.easeOut
+			  }, '-=0.5')
+			  // reveal cloud
+			  .to(Bnr.Model.DOM_ELEMENTS.IMG10, .5, {
+			  	opacity: '1',
+			  	y: '0',
+			  	ease: Sine.easeOut
+			  }, '-=0.75');
+        },
+
+        ctaOver: function() {
+          Bnr.Model.DOM_ELEMENTS.IMG8.src = "./images/tag_cta_ro.svg";
+        },
+
+        ctaOut: function() {
+          Bnr.Model.DOM_ELEMENTS.IMG8.src = "./images/tag_cta.svg";
+        }
+          },
+          Controller: {
+            preload: function(arr) {
+              var i = 0;
+              var imgObj;
+              while(i < arr.length) {
+                imgObj = new Image();
+                imgObj.src = arr[i];
+                imgObj.addEventListener("load", Bnr.Controller.imageHasLoaded, false);
+                i += 1;
+              }
+            },
+            imageHasLoaded: function() {
+              Bnr.Model.Status.numOfImgsLoaded += 1;
+              if(Bnr.Model.Status.numOfImgsLoaded === Bnr.Model.INITIAL_IMGS_TO_LOAD.length && Bnr.Model.Status.initialLoadComplete === false) {
+                Bnr.Model.Status.initialLoadComplete = true;
+                Bnr.Model.Status.numOfImgsLoaded = 0;
+                Bnr.Controller.preload(Bnr.Model.ADDTNL_IMGS_TO_LOAD);
+              } else if(Bnr.Model.Status.numOfImgsLoaded === Bnr.Model.ADDTNL_IMGS_TO_LOAD.length) {
+                Bnr.Controller.init();
+              }
+            },
+            init: function() {
+              // size container
+              var c = document.getElementById("container");
+              var bdr = document.querySelector(".banner-border");
+              var i = 1;
+              c.style.width = Bnr.Model.BANNER_CONFIG.width + 'px';
+              c.style.height = Bnr.Model.BANNER_CONFIG.height + 'px';
+              bdr.style.width = (Bnr.Model.BANNER_CONFIG.width - 2) + 'px';
+              bdr.style.height = (Bnr.Model.BANNER_CONFIG.height - 2) + 'px';
+              // retrieve DOM elements
+              var NUM_OF_FRAMES = document.getElementsByClassName("frame").length;
+              var NUM_OF_IMGS = document.getElementsByClassName("frame__img").length;
+              Bnr.Model.DOM_ELEMENTS.BANNER_CONTENT = document.querySelector(".banner-content");
+              while(i <= NUM_OF_FRAMES) {
+                Bnr.Model.DOM_ELEMENTS["FRAME" + i] = document.querySelector(".frame-" + i);
+                i += 1;
+              }
+              i = 1;
+              while(i <= NUM_OF_IMGS) {
+                Bnr.Model.DOM_ELEMENTS["IMG" + i] = document.querySelector(".image-" + i);
+                i += 1;
+              }
+              // cta hover 
+              Bnr.Model.DOM_ELEMENTS["EXT"] = document.getElementsByClassName("exit")[0];
+              Bnr.Model.DOM_ELEMENTS.EXT.addEventListener("mouseover", Bnr.View.ctaOver);
+              Bnr.Model.DOM_ELEMENTS.EXT.addEventListener("mouseout", Bnr.View.ctaOut);
+              // reveal banner
+              Bnr.Model.DOM_ELEMENTS.BANNER_CONTENT.classList.add("banner-content--active");
+              Bnr.View.init();
+            }
+          }
+        };
+        Bnr.Controller.preload(Bnr.Model.INITIAL_IMGS_TO_LOAD);
+      };
+    </script>
+  <head>
+    <body>
+        <div id="container" class="container" style="background-color: #fff;">
+          <div class="banner-content">
+            <img src="./images/F0.jpg" alt="">
+            <div class="frame frame-1">
+              <img src="./images/F1_bg_mask.png" class="frame__img image-1" alt="">
+              <div class="frame__img image-2">
+                <img src="./images/F1_dotted_box.svg" style="width:100%; height:100%;" alt="">
+              </div>
+              <div class="frame__img image-3">
+                <img src="./images/F1_text.svg" class="frame__img" alt="">
+              </div>
+              <img src="./images/F1_cursor.svg" class="frame__img image-4" alt="">
+            </div>
+            <div class="frame frame-2">
+              <img src="./images/tag_bg.jpg" class="frame__img image-5" alt="">
+              <img src="./images/tag_headline1.svg" class="frame__img image-6" alt="">
+              <img src="./images/tag_headline2.svg" class="frame__img image-7" alt="">
+              <img src="./images/tag_cta.svg" class="frame__img image-8" alt="">
+              <img src="./images/tag_logo.svg" class="frame__img image-9" alt="">
+              <img src="./images/tag_cloud.svg" class="frame__img image-10" alt="">
+            </div>
+          </div>
+          <a class="exit" href="javascript:void(window.open(window.clickTag))"></a>
+          <div class="banner-border"></div>
+        </div>
+    </body>
+</html>
