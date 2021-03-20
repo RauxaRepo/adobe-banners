@@ -125,33 +125,24 @@
       }
 
       .image-6 {
-        left: 100px;
+        left: 76px;
         top: 27px;
-        width: 120px;
+        width: 288px;
         height: 15px;
         opacity: 0;
         transform: translateY(+80px);
       }
 
       .image-7 {
-        left: 225px;
-        top: 27px;
-        width: 161px;
-        height: 15px;
+        left: 77px;
+        top: 47px;
+        width: 160px;
+        height: 19px;
         opacity: 0;
         transform: translateY(+90px);
       }
 
       .image-8 {
-        left: 100px;
-        top: 50px;
-        width: 152px;
-        height: 18px;
-        opacity: 0;
-        transform: translateY(+80px);
-      }
-
-      .image-9 {
         left: 406px;
         top: 27px;
         width: 102px;
@@ -162,7 +153,7 @@
         cursor: pointer;
       }
 
-      .image-10 {
+      .image-9 {
         left: 20px;
         top: -11px;
         width: 67px;
@@ -171,7 +162,7 @@
         transform: translateY(+40px);
       }
 
-      .image-11 {
+      .image-10 {
         left: 569px;
         top: -2px;
         width: 140px;
@@ -199,7 +190,6 @@
               "./images/tag_bg.jpg",
               "./images/tag_headline1.svg",
               "./images/tag_headline2.svg",
-              "./images/tag_headline3.svg",
               "./images/tag_cta.svg",
               "./images/tag_logo.svg",
               "./images/tag_cloud.svg"
@@ -270,7 +260,7 @@
                 ease: Sine.easeIn
               }, '+=0')
               // reveal logo
-              .to(Bnr.Model.DOM_ELEMENTS.IMG10, .5, {
+              .to(Bnr.Model.DOM_ELEMENTS.IMG9, .5, {
                 opacity: '1',
                 y: '0',
                 ease: Sine.easeOut
@@ -282,25 +272,18 @@
                 ease: Sine.easeOut
               }, '-=0.5')
               // reveal headline2
-              .to(Bnr.Model.DOM_ELEMENTS.IMG7, .8, {
+              .to(Bnr.Model.DOM_ELEMENTS.IMG7, .65, {
                 opacity: '1',
                 y: '0',
                 ease: Sine.easeOut
-              }, '-=0.65')
-              // reveal headlin3
-              .to(Bnr.Model.DOM_ELEMENTS.IMG8, .8, {
-                opacity: '1',
-                y: '0',
-                ease: Sine.easeOut
-              }, '-=0.65')
-              // reveal cta
-              .to(Bnr.Model.DOM_ELEMENTS.IMG9, .5, {
+              }, '-=0.5')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG8, .5, {
                 opacity: '1',
                 y: '0',
                 ease: Sine.easeOut
               }, '-=0.5')
               // reveal cloud
-              .to(Bnr.Model.DOM_ELEMENTS.IMG11, .5, {
+              .to(Bnr.Model.DOM_ELEMENTS.IMG10, .5, {
                 opacity: '1',
                 y: '0',
                 ease: Sine.easeOut
@@ -392,10 +375,9 @@
             <img src="./images/tag_bg.jpg" class="frame__img image-5" alt="">
             <img src="./images/tag_headline1.svg" class="frame__img image-6" alt="">
             <img src="./images/tag_headline2.svg" class="frame__img image-7" alt="">
-            <img src="./images/tag_headline3.svg" class="frame__img image-8" alt="">
-            <img src="./images/tag_cta.svg" class="frame__img image-9" alt="">
-            <img src="./images/tag_logo.svg" class="frame__img image-10" alt="">
-            <img src="./images/tag_cloud.svg" class="frame__img image-11" alt="">
+            <img src="./images/tag_cta.svg" class="frame__img image-8" alt="">
+            <img src="./images/tag_logo.svg" class="frame__img image-9" alt="">
+            <img src="./images/tag_cloud.svg" class="frame__img image-10" alt="">
           </div>
         </div>
         <a class="exit" href="javascript:void(window.open(window.clickTag))"></a>
