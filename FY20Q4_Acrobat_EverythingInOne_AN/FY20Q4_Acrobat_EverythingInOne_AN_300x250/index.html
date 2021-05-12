@@ -40,15 +40,18 @@
         display: block;
       }
 
+      /* CM why does this have to be a separate div and not just be a border that's added to the */
       .banner-border {
         position: absolute;
         border: 1px solid #D5D5D5;
         pointer-events: none;
+        /* why z ?  */
         z-index: 200;
         top: 0px;
         left: 0px;
       }
      
+      /* CM exit means they clicked on it right?  */
       .exit {
         width: 100%;
         height: 100%;
@@ -63,6 +66,7 @@
         cursor: pointer;
       }
 
+      /* frames container - all the stuff that animates moves */
       .frame {
         position: absolute;
         width: 100%;
@@ -75,6 +79,7 @@
         opacity: 0;
       }
 
+      /* CM ok so I'm not seeing this class anywhere, but you are using frame__img  */
       .frame__img {
         position: absolute;
         width: 100%;
@@ -85,7 +90,8 @@
         right: 0;
         z-index: 102;
       }
-      
+
+      /* copy and cta */
       .image-1 {
         left: 20px;
         top: 0px;
@@ -93,7 +99,7 @@
         height: 250px;
         opacity: 1;
       }
-
+      /* pc */
       .image-2 {
         left: 115px;
         top: 120px;
@@ -101,14 +107,16 @@
         height: 122px;
       }
 
+      /* tablet */
       .image-3 {
         left: 150px;
         top: 110px;
         width: 111px;
         height: 136px;
-        transform: translateX(150px);
+        transform: translateX(-250px);
       }
 
+      /* phone */
       .image-4 {
         left: 156px;
         top: 104px;
@@ -120,14 +128,14 @@
     <script type="text/javascript" charset="utf-8">
       var Bnr = window.Bnr || {};
       window.onload = function() {
-        "use strict";
+        "use strict"; // necessary? for support or what?
         Bnr = {
           Model: {
             BANNER_CONFIG: {
               width: 300,
               height: 250
             },
-            INITIAL_IMGS_TO_LOAD: ["./images/F0.png"],
+            INITIAL_IMGS_TO_LOAD: ["./images/F0.png"], // only load like 40k to start so it doesn't overwhelm the load of rest of page
             ADDTNL_IMGS_TO_LOAD: [
               "./images/F1_copy-cta-logo.svg",
               "./images/F1_pc.png",
@@ -147,13 +155,14 @@
               });
               TL
               // reveal frame 1
-              .to(Bnr.Model.DOM_ELEMENTS.FRAME1, 0, {
+              // CM how can i get this opacity to fade in?
+              .to(Bnr.Model.DOM_ELEMENTS.FRAME1, 10, { // the 0 was to tell how long to take changing the below values
                 opacity: '1', 
                 ease: Sine.easeOut
-              }, '+=0')
+              }, '+=0') // num seconds
               // animate pc
               .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0.5, {
-                y: '+180',
+                y: '-280',
                 ease: Sine.easeOut
               },'+=1')
               // animate tablet
@@ -228,15 +237,16 @@
   <body>
 	<div id="container" class="container" style="background-color: #fff;">
 	  <div class="banner-content">
-          <img src="./images/F0.png" alt="">
+        <img src="./images/F0.png" alt="">
 		  <div class="frame frame-1">
-            <img src="./images/F1_copy-cta-logo.svg" class="frame__img image-1" alt="">
-            <img src="./images/F1_pc.png" class="frame__img image-2" alt="">
-            <img src="./images/F1_tablet.png" class="frame__img image-3" alt="">
-            <img src="./images/F1_phone.png" class="frame__img image-4" alt="">
-          </div>
+        <img src="./images/F1_copy-cta-logo.svg" class="frame__img image-1" alt="">
+        <img src="./images/F1_pc.png" class="frame__img image-2" alt="">
+        <img src="./images/F1_tablet.png" class="frame__img image-3" alt="">
+        <img src="./images/F1_phone.png" class="frame__img image-4" alt="">
+      </div>
     </div>
     <div class="banner-border"></div>
+    <!-- CM what does this do? vvv -->
 	  <a class="exit" href="javascript:void(window.open(window.clickTag))"></a>
 	</div>
   </body>
