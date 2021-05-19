@@ -141,10 +141,11 @@
         },
         View: {
           init: function () {
+            Bnr.Model.DOM_ELEMENTS.BANNER_CONTENT.classList.add("banner-content--active");
+
             var TL = new TimelineMax({
               paused: false
             });
-            Bnr.Model.DOM_ELEMENTS.BANNER_CONTENT.classList.add("banner-content--active");
             TL
               // reveal frame 1
               .to(Bnr.Model.DOM_ELEMENTS.FRAME1, 0, {
@@ -155,12 +156,48 @@
               .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.25, {
                 opacity: 1,
                 scale: "0"
-              }, "+=0.5").to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.12, {
+              }, "+=1")
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.12, {
                 scale: "1.2",
                 repeat: 1,
                 yoyo: true,
                 ease: Sine.easeOut
-              }, "-=00.25");
+              }, "-=0.25")
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
+                opacity: 0,
+                scale: "0"
+              }, "+=4");
+
+            var TL2 = new TimelineMax({
+              paused: false
+            });
+            TL2
+              // animate popup 2nd time
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.12, {
+                opacity: 1,
+                scale: "1.2"
+              }, "+=8")
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.12, {
+                scale: "1"
+              }, "+=0.25")
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
+                opacity: 0,
+                scale: "0"
+              }, "+=4");
+
+            var TL3 = new TimelineMax({
+              paused: false
+            });
+            TL3
+              // animate popup 2nd time
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.12, {
+                opacity: 1,
+                scale: "1.2"
+              }, "+=18")
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.12, {
+                scale: "1"
+              }, "+=0.25");
+
           },
           ctaOver: function () {
             Bnr.Model.DOM_ELEMENTS.IMG1.src = "./images/F1_copy-cta-logo_ro.svg";
