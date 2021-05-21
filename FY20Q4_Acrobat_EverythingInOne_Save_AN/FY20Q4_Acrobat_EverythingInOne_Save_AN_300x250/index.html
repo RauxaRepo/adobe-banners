@@ -172,7 +172,100 @@
               .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.5, {
                 x: '0',
                 ease: Sine.easeOut
+              }, '-=0.3')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.5, {
+                y: '+180',
+                ease: Sine.easeOut
+              }, '+=4')
+              //reset pc
+              .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0, {
+                y: '0',
+                x: '+160',
+                ease: Sine.easeOut
+              }, '+=0')
+              //reset tablet
+              .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0, {
+                y: '0',
+                x: '+160',
+                ease: Sine.easeOut
+              }, '+=0')
+              //reset phone
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
+                y: '0',
+                x: '+160',
+                ease: Sine.easeOut
+              }, '+=0')
+              // loop 2
+              // animate pc
+              .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0.5, {
+                x: '0',
+                ease: Sine.easeOut
+              }, '+=0')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0.5, {
+                y: '+180',
+                ease: Sine.easeOut
+              }, '+=2')
+              // animate tablet
+              .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0.5, {
+                x: '0',
+                ease: Sine.easeOut
+              }, '-=0.25')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0.5, {
+                y: '+180',
+                ease: Sine.easeOut
+              }, '+=1.5')
+              // animate phone
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.5, {
+                x: '0',
+                ease: Sine.easeOut
+              }, '-=0.3')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.5, {
+                y: '+180',
+                ease: Sine.easeOut
+              }, '+=4')
+              //reset pc
+              .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0, {
+                y: '0',
+                x: '+160',
+                ease: Sine.easeOut
+              }, '+=0')
+              //reset tablet
+              .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0, {
+                y: '0',
+                x: '+160',
+                ease: Sine.easeOut
+              }, '+=0')
+              //reset phone
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
+                y: '0',
+                x: '+160',
+                ease: Sine.easeOut
+              }, '+=0')
+              // loop 3
+              // animate pc
+              .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0.5, {
+                x: '0',
+                ease: Sine.easeOut
+              }, '+=0')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0.5, {
+                y: '+180',
+                ease: Sine.easeOut
+              }, '+=2')
+              // animate tablet
+              .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0.5, {
+                x: '0',
+                ease: Sine.easeOut
+              }, '-=0.25')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0.5, {
+                y: '+180',
+                ease: Sine.easeOut
+              }, '+=1.5')
+              // animate phone
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.5, {
+                x: '0',
+                ease: Sine.easeOut
               }, '-=0.3');
+            
           },
           ctaOver: function () {
             Bnr.Model.DOM_ELEMENTS.IMG1.src = "./images/F1_copy-cta-logo_ro.svg";
