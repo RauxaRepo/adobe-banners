@@ -92,36 +92,36 @@
     /* copy and cta */
     .image-1 {
       left: 20px;
-      top: 0px;
-      width: 256px;
-      height: 600px;
+      top: 20px;
+      width: 263px;
+      height: 184px;
       opacity: 1;
     }
 
-    /* pc */
+    /* phone + comment svg */
     .image-2 {
-      left: 117px;
-      top: 74px;
-      width: 183px;
-      height: 182px;
+      left: 0px;
+      top: 209px;
+      width: 300px;
+      height: 391px;
     }
 
-    /* tablet */
+    /* phone + edit svg */
     .image-3 {
-      left: 112px;
-      top: 74px;
-      width: 187px;
-      height: 187px;
-      transform: translateX(160px);
+      left: 0px;
+      top: 209px;
+      width: 300px;
+      height: 391px;
+      transform: translateX(300px);
     }
 
-    /* phone */
+    /* phone + sign svg */
     .image-4 {
-      left: 118px;
-      top: 74px;
-      width: 181px;
-      height: 181px;
-      transform: translateX(160px);
+      left: 0px;
+      top: 209px;
+      width: 300px;
+      height: 391px;
+      transform: translateX(300px);
     }
   </style>
   <script type="text/javascript" charset="utf-8">
@@ -134,13 +134,13 @@
             width: 300,
             height: 600
           },
-          INITIAL_IMGS_TO_LOAD: ["./images/F0.png"], // only load like 40k to start so it doesn't overwhelm the load of rest of page
+          INITIAL_IMGS_TO_LOAD: ["./images/bg.png"], // only load like 40k to start so it doesn't overwhelm the load of rest of page
           ADDTNL_IMGS_TO_LOAD: [
-            "./images/F1_copy-cta-logo.svg",
-            "./images/F1_copy-cta-logo_ro.svg",
-            "./images/F1_comment.png",
-            "./images/F1_edit.png",
-            "./images/F1_esign.png"
+            "./images/logo_hl_cta.svg",
+            "./images/logo_hl_cta_ho.svg",
+            "./images/1_comment.png",
+            "./images/2_edit.png",
+            "./images/3_sign.png"
           ],
           DOM_ELEMENTS: {},
           Status: {
@@ -155,118 +155,118 @@
             });
             Bnr.Model.DOM_ELEMENTS.BANNER_CONTENT.classList.add("banner-content--active");
             TL
-              // reveal frame 1
+              // reveal initial content
               .to(Bnr.Model.DOM_ELEMENTS.FRAME1, 0, { // the 0 was to tell how long to take changing the below values
                 opacity: '1',
                 ease: Sine.easeOut
               }, '+=0') // num seconds
-              // animate pc
+              // animate phone + comment svg
               .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0.5, {
-                y: '+180',
+                y: '+350',
                 ease: Sine.easeOut
               }, '+=1.5')
-              // animate tablet
+              // animate phone + edit svg
               .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0.5, {
                 x: '0',
                 ease: Sine.easeOut
               }, '-=0.25')
               .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0.5, {
-                y: '+180',
+                y: '+350',
                 ease: Sine.easeOut
               }, '+=1.5')
-              // animate phone
+              // animate phone + sign svg
               .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.5, {
                 x: '0',
                 ease: Sine.easeOut
               }, '-=0.3')
               .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.5, {
-                y: '+180',
+                y: '+350',
                 ease: Sine.easeOut
               }, '+=4')
-              //reset pc
+              //reset phone + comment svg
               .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0, {
                 y: '0',
-                x: '+160',
+                x: '+300',
                 ease: Sine.easeOut
               }, '+=0')
-              //reset tablet
+              //reset phone + edit svg
               .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0, {
                 y: '0',
-                x: '+160',
+                x: '+300',
                 ease: Sine.easeOut
               }, '+=0')
-              //reset phone
+              //reset phone + sign svg
               .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
                 y: '0',
-                x: '+160',
+                x: '+300',
                 ease: Sine.easeOut
               }, '+=0')
               // loop 2
-              // animate pc
+              // animate phone + comment svg
               .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0.5, {
                 x: '0',
                 ease: Sine.easeOut
               }, '+=0')
               .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0.5, {
-                y: '+180',
+                y: '+350',
                 ease: Sine.easeOut
               }, '+=2')
-              // animate tablet
+              // animate phone + edit svg
               .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0.5, {
                 x: '0',
                 ease: Sine.easeOut
               }, '-=0.25')
               .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0.5, {
-                y: '+180',
+                y: '+350',
                 ease: Sine.easeOut
               }, '+=1.5')
-              // animate phone
+              // animate phone + sign svg
               .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.5, {
                 x: '0',
                 ease: Sine.easeOut
               }, '-=0.3')
               .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.5, {
-                y: '+180',
+                y: '+350',
                 ease: Sine.easeOut
               }, '+=4')
-              //reset pc
+              //reset phone + comment svg
               .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0, {
                 y: '0',
-                x: '+160',
+                x: '+300',
                 ease: Sine.easeOut
               }, '+=0')
-              //reset tablet
+              //reset phone + edit svg
               .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0, {
                 y: '0',
-                x: '+160',
+                x: '+300',
                 ease: Sine.easeOut
               }, '+=0')
-              //reset phone
+              //reset phone + sign svg
               .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
                 y: '0',
-                x: '+160',
+                x: '+300',
                 ease: Sine.easeOut
               }, '+=0')
               // loop 3
-              // animate pc
+              // animate phone + comment svg
               .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0.5, {
                 x: '0',
                 ease: Sine.easeOut
               }, '+=0')
               .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0.5, {
-                y: '+180',
+                y: '+350',
                 ease: Sine.easeOut
               }, '+=2')
-              // animate tablet
+              // animate phone + edit svg
               .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0.5, {
                 x: '0',
                 ease: Sine.easeOut
               }, '-=0.25')
               .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0.5, {
-                y: '+180',
+                y: '+350',
                 ease: Sine.easeOut
               }, '+=1.5')
-              // animate phone
+              // animate phone + sign svg
               .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.5, {
                 x: '0',
                 ease: Sine.easeOut
@@ -274,11 +274,11 @@
             
           },
           ctaOver: function () {
-            Bnr.Model.DOM_ELEMENTS.IMG1.src = "./images/F1_copy-cta-logo_ro.svg";
+            Bnr.Model.DOM_ELEMENTS.IMG1.src = "./images/logo_hl_cta_ho.svg";
           },
 
           ctaOut: function () {
-            Bnr.Model.DOM_ELEMENTS.IMG1.src = "./images/F1_copy-cta-logo.svg";
+            Bnr.Model.DOM_ELEMENTS.IMG1.src = "./images/logo_hl_cta.svg";
           }
         },
         Controller: {
@@ -342,12 +342,12 @@
   <body>
     <div id="container" class="container" style="background-color: #fff;">
       <div class="banner-content">
-        <img src="./images/F0.png" alt="">
+        <img src="./images/bg.png" alt="">
         <div class="frame frame-1">
-          <img src="./images/F1_copy-cta-logo.svg" class="frame__img image-1" alt="">
-          <img src="./images/F1_comment.png" class="frame__img image-2" alt="">
-          <img src="./images/F1_edit.png" class="frame__img image-3" alt="">
-          <img src="./images/F1_esign.png" class="frame__img image-4" alt="">
+          <img src="./images/logo_hl_cta.svg" class="frame__img image-1" alt="">
+          <img src="./images/1_comment.png" class="frame__img image-2" alt="">
+          <img src="./images/2_edit.png" class="frame__img image-3" alt="">
+          <img src="./images/3_sign.png" class="frame__img image-4" alt="">
         </div>
       </div>
       <div class="banner-border"></div>
