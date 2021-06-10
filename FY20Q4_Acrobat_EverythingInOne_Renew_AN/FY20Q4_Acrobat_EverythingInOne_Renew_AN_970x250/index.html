@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title></title>
+  <meta name="ad.size" content="width=970,height=250">
+  <script type="text/javascript">
+    var clickTag = "https://commerce.adobe.com/checkout?cli=creative&co=US&lang=en&items%5B0%5D%5Bid%5D=2BCCAF555646E0EEE99F3AD8C2FDC7B3&items%5B0%5D%5Bcs%5D=0";
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+  <style type="text/css">
+    * {
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    .container {
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      width: 970px;
+      height: 250px;
+    }
+
+    .banner-content {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      display: none;
+      z-index: 100;
+    }
+
+    .banner-content.banner-content--active {
+      opacity: 1;
+      display: block;
+    }
+
+    .banner-border {
+      position: absolute;
+      border: 1px solid #D5D5D5;
+      pointer-events: none;
+      z-index: 200;
+      top: 0px;
+      left: 0px;
+    }
+
+    /* on click */
+    .exit {
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 201;
+      cursor: pointer;
+    }
+    
+    /* frames container - all the stuff that animates moves */
+    .frame {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 101;
+      opacity: 0;
+    }
+
+    .frame__img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 102;
+    }
+
+    /* copy and cta */
+    .image-1 {
+      left: 86px;
+      top: 47px;
+      width: 455px;
+      height: 171px;
+      opacity: 1;
+    }
+
+    /* 1 phone + comment svg */
+    .image-2 {
+      left: 537px;
+      top: -86px;
+      width: 414px;
+      height: 414px;
+    }
+
+    /* 2 phone + edit svg */
+    .image-3 {
+      left: 522px;
+      top: -78px;
+      width: 437px;
+      height: 437px;
+      transform: translateY(-300px);
+    }
+
+    /* 3 phone + sign svg */
+    .image-4 {
+      left: 543px;
+      top: -83px;
+      width: 419px;
+      height: 420px;
+      transform: translateY(-300px);
+    }
+  </style>
+  <script type="text/javascript" charset="utf-8">
+    var Bnr = window.Bnr || {};
+    window.onload = function () {
+      "use strict";
+      Bnr = {
+        Model: {
+          BANNER_CONFIG: {
+            width: 970,
+            height: 250
+          },
+          INITIAL_IMGS_TO_LOAD: ["./images/bg.png"], // only load like 40k to start so it doesn't overwhelm the load of rest of page
+          ADDTNL_IMGS_TO_LOAD: [
+            "./images/logo_hl_cta.svg",
+            "./images/logo_hl_cta_ho.svg",
+            "./images/1_comment.png",
+            "./images/2_edit.png",
+            "./images/3_sign.png"
+          ],
+          DOM_ELEMENTS: {},
+          Status: {
+            numOfImgsLoaded: 0,
+            initialLoadComplete: false
+          }
+        },
+        View: {
+          init: function () {
+            var TL = new TimelineMax({
+              paused: false
+            });
+            Bnr.Model.DOM_ELEMENTS.BANNER_CONTENT.classList.add("banner-content--active");
+            TL
+              // reveal initial content
+              .to(Bnr.Model.DOM_ELEMENTS.FRAME1, 0, { // the 0 was to tell how long to take changing the below values
+                opacity: '1',
+                ease: Sine.easeOut
+              }, '+=0') // num seconds
+              // FIRST LOOP
+              // animate phone + comment svg
+              .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0.5, {
+                y: '+450',
+                ease: Sine.easeOut
+              }, '+=1.5')
+              // animate 2 phone + edit svg
+              .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0.5, {
+                y: '0',
+                ease: Sine.easeOut
+              }, '-=0.25')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0.5, {
+                y: '+450',
+                ease: Sine.easeOut
+              }, '+=1.5')
+              // animate 3 phone + sign svg
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.5, {
+                y: '0',
+                ease: Sine.easeOut
+              }, '-=0.3')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.5, {
+                y: '+450',
+                ease: Sine.easeOut
+              }, '+=4')
+              //reset phone + comment svg
+              .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0, {
+                y: '-300',
+                x: '0',
+                ease: Sine.easeOut
+              }, '+=0')
+              //reset 2 phone + edit svg
+              .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0, {
+                y: '-300',
+                x: '0',
+                ease: Sine.easeOut
+              }, '+=0')
+              //reset 3 phone + sign svg
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
+                y: '-300',
+                x: '0',
+                ease: Sine.easeOut
+              }, '+=0')
+              // LOOP 2
+              // animate 1 phone + comment svg
+              .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0.5, {
+                x: '0',
+                y: '0',
+                ease: Sine.easeOut
+              }, '+=0')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0.5, {
+                y: '+450',
+                ease: Sine.easeOut
+              }, '+=2')
+              // animate 2 phone + edit svg
+              .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0.5, {
+                x: '0',
+                y: '0',
+                ease: Sine.easeOut
+              }, '-=0.25')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0.5, {
+                y: '+450',
+                ease: Sine.easeOut
+              }, '+=1.5')
+              // animate 3 phone + sign svg
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.5, {
+                x: '0',
+                y: '0',
+                ease: Sine.easeOut
+              }, '-=0.3')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.5, {
+                y: '+450',
+                ease: Sine.easeOut
+              }, '+=4')
+              //reset 1 phone + comment svg
+              .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0, {
+                y: '-300',
+                x: '0',
+                ease: Sine.easeOut
+              }, '+=0')
+              //reset 2 phone + edit svg
+              .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0, {
+                y: '-300',
+                x: '0',
+                ease: Sine.easeOut
+              }, '+=0')
+              //reset 3 phone + sign svg
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0, {
+                y: '-300',
+                x: '0',
+                ease: Sine.easeOut
+              }, '+=0')
+              // LOOP 3
+              // animate 1 phone + comment svg
+              .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0.5, {
+                x: '0',
+                y: '0',
+                ease: Sine.easeOut
+              }, '+=0')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG2, 0.5, {
+                y: '+450',
+                ease: Sine.easeOut
+              }, '+=2')
+              // animate 2 phone + edit svg
+              .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0.5, {
+                x: '0',
+                y: '0',
+                ease: Sine.easeOut
+              }, '-=0.25')
+              .to(Bnr.Model.DOM_ELEMENTS.IMG3, 0.5, {
+                y: '+450',
+                ease: Sine.easeOut
+              }, '+=1.5')
+              // animate 3 phone + sign svg
+              .to(Bnr.Model.DOM_ELEMENTS.IMG4, 0.5, {
+                x: '0',
+                y:'0',
+                ease: Sine.easeOut
+              }, '-=0.3');
+            
+          },
+          ctaOver: function () {
+            Bnr.Model.DOM_ELEMENTS.IMG1.src = "./images/logo_hl_cta_ho.svg";
+          },
+
+          ctaOut: function () {
+            Bnr.Model.DOM_ELEMENTS.IMG1.src = "./images/logo_hl_cta.svg";
+          }
+        },
+        Controller: {
+          preload: function (arr) {
+            var i = 0;
+            var imgObj;
+            while (i < arr.length) {
+              imgObj = new Image();
+              imgObj.src = arr[i];
+              imgObj.addEventListener("load", Bnr.Controller.imageHasLoaded, false);
+              i += 1;
+            }
+          },
+          imageHasLoaded: function () {
+            Bnr.Model.Status.numOfImgsLoaded += 1;
+            if (Bnr.Model.Status.numOfImgsLoaded === Bnr.Model.INITIAL_IMGS_TO_LOAD.length && Bnr.Model.Status.initialLoadComplete === false) {
+              Bnr.Model.Status.initialLoadComplete = true;
+              Bnr.Model.Status.numOfImgsLoaded = 0;
+              Bnr.Controller.preload(Bnr.Model.ADDTNL_IMGS_TO_LOAD);
+            } else if (Bnr.Model.Status.numOfImgsLoaded === Bnr.Model.ADDTNL_IMGS_TO_LOAD.length) {
+              Bnr.Controller.init();
+            }
+          },
+          init: function () {
+            // size container
+            var c = document.getElementById("container");
+            var bdr = document.querySelector(".banner-border");
+            var i = 1;
+            c.style.width = Bnr.Model.BANNER_CONFIG.width + 'px';
+            c.style.height = Bnr.Model.BANNER_CONFIG.height + 'px';
+            bdr.style.width = (Bnr.Model.BANNER_CONFIG.width - 2) + 'px';
+            bdr.style.height = (Bnr.Model.BANNER_CONFIG.height - 2) + 'px';
+            // retrieve DOM elements
+            var NUM_OF_FRAMES = document.getElementsByClassName("frame").length;
+            var NUM_OF_IMGS = document.getElementsByClassName("frame__img").length;
+            Bnr.Model.DOM_ELEMENTS.BANNER_CONTENT = document.querySelector(".banner-content");
+            while (i <= NUM_OF_FRAMES) {
+              Bnr.Model.DOM_ELEMENTS["FRAME" + i] = document.querySelector(".frame-" + i);
+              i += 1;
+            }
+            i = 1;
+            while (i <= NUM_OF_IMGS) {
+              Bnr.Model.DOM_ELEMENTS["IMG" + i] = document.querySelector(".image-" + i);
+              i += 1;
+            }
+            // cta hover 
+            Bnr.Model.DOM_ELEMENTS["EXT"] = document.getElementsByClassName("exit")[0];
+            Bnr.Model.DOM_ELEMENTS.EXT.addEventListener("mouseover", Bnr.View.ctaOver);
+            Bnr.Model.DOM_ELEMENTS.EXT.addEventListener("mouseout", Bnr.View.ctaOut);
+            // reveal banner
+            Bnr.View.init();
+          }
+        }
+      };
+      Bnr.Controller.preload(Bnr.Model.INITIAL_IMGS_TO_LOAD);
+    };
+  </script>
+
+  <head>
+
+  <body>
+    <div id="container" class="container" style="background-color: #fff;">
+      <div class="banner-content">
+        <img src="./images/bg.png" alt="">
+        <div class="frame frame-1">
+          <img src="./images/logo_hl_cta.svg" class="frame__img image-1" alt="">
+          <img src="./images/1_comment.png" class="frame__img image-2" alt="">
+          <img src="./images/2_edit.png" class="frame__img image-3" alt="">
+          <img src="./images/3_sign.png" class="frame__img image-4" alt="">
+        </div>
+      </div>
+      <div class="banner-border"></div>
+      <a class="exit" href="javascript:void(window.open(window.clickTag))"></a>
+    </div>
+  </body>
+
+</html>
